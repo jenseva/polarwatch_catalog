@@ -1,0 +1,296 @@
+
+  <div class="download-section col-md-5 col-md-offset-1">
+  {% if dataset.inERDDAP == 1 %}
+  <div class="projectedDownloadText hidden well">This dataset is provided in projected format. Data downloads are available through this subsetting form as well as full direct file access. Direct file access provides the projection metadata in a format better suited for netcdf data viewers. The projection of this dataset is {{dataset.proj_crs_code}}.</div>
+        
+    <form id="{{dataset.id~'-form'}}" class="getData form-group" name="getdataform" method="GET" action="/results/">
+           
+        <div id="{{dataset.id ~ 'location-get-wrap'}}" class="location-get-wrap'">
+          
+          <div class="col-xs-12 form-group form-section" >
+
+            <h3>Location</h3>
+                
+              <div class="coord-input row" id="{{ dataset.id ~ '-coord-input'}}" data-isIncreasing="{{ dataset.ycoord.isIncreasing }}">
+   
+                <div class="ycoord-input col-xs-12" >
+                      
+                    <div class="coord-input-label">{{dataset.ycoord.name}}</div>
+                      
+                    <div class="coord-input-wrap">
+                    
+                      <div class="min-coord-wrap">
+                              <input alt="ycoord-min" id="{{ dataset.id ~ '-getData-ycoord-min'}}" class="form-control ycoord-min-input" name="ycoord-min" 
+                              type="text" value="{{ dataset.ycoord.min }}"  placeholder="{{ dataset.ycoord.min }}"/>
+                      </div>
+                    
+                      <span class="dim-input-dash">to</span>
+                    
+                      <div class="max-coord-wrap">
+                        <input alt="ycoord-max" id="{{ dataset.id ~ '-getData-ycoord-max'}}" class="form-control ycoord-max-input" name="ycoord-max" 
+                        type="text" value="{{ dataset.ycoord.max }}" placeholder="{{ dataset.ycoord.max }}"/>
+                      </div>
+                      
+                      <div class="ycoord-stride-wrap">
+                        <span id="{{ dataset.id ~ '-getData-ycoord-stride-btn'}}" class="ycoord-stride-btn">Add Stride </span>
+                        <div id="{{ dataset.id ~ '-getData-ycoord-stride-input'}}" class="ycoord-stride-input-wrap hidden">
+                          <div class="stride-label">Stride: </div><input alt="ycoord-stride" id="{{ dataset.id ~ '-getData-ycoord-stride'}}" name="ycoord-stride" 
+                        type="text" value="1" placeholder="1" class="form-control ycoord-stride-input"/><span class="atooltip" data-toggle="tooltip" data-placement="left" title="Stride: 1 = get every value, 2 = get every other value, 3 = get every third value..." ><i class="fa fa-info-circle" aria-hidden="true"></i></span>
+                        </div>
+                      </div>
+                    </div> <!-- end coord-input-wrap-->
+                </div><!-- end ycoord-input -->
+                
+
+                <div class="xcoord-input col-xs-12">
+                        <div class="coord-input-label">{{dataset.xcoord.name}}</div>
+                        
+                        <div class="coord-input-wrap">
+                        
+                          <div class="min-coord-wrap">
+                            <input alt="getData-xcoord-min" id="{{dataset.id ~ '-getData-xcoord-min'}}" name="xcoord-min" 
+                            type="text" value="{{dataset.xcoord.min}}" placeholder="{{dataset.xcoord.min}}" class="form-control" />
+                          </div>
+                        
+                          <span class="dim-input-dash">to</span>
+                        
+                          <div class="max-coord-wrap">
+                            <input alt="getdata-xcoord-max" id="{{dataset.id ~ '-getData-xcoord-max'}}" name="xcoord-max" 
+                            type="text" value="{{dataset.xcoord.max}}" placeholder="{{dataset.xcoord.max}}" class="form-control"/>
+                          </div> 
+
+                          <div class="xcoord-stride-wrap">
+                            <span id="{{dataset.id ~ '-getData-xcoord-stride-btn'}}" class="xcoord-stride-btn">Add Stride </span>
+                            <div id="{{dataset.id ~ '-getData-xcoord-stride-input'}}" class="xcoord-stride-input hidden">
+                              <div class="stride-label">Stride: </div><input alt="xcoord-stride" id="{{dataset.id ~ '-getData-xcoord-stride'}}" name="xcoord-stride" 
+                            type="text" value="1" placeholder="1" class="form-control xcoord-stride-input"/><span class="atooltip" data-toggle="tooltip" title="STRIDE: 1 = get every value, 2 = get every other value, 3 = get every third value..." ><i class="fa fa-info-circle" aria-hidden="true"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                </div> <!-- end xcoord-input -->
+              </div><!-- end coord-input -->
+              
+                <!--
+                <div class="areadiv hidden" id="{{ dataset.id ~ 'areaSelectDiv'}}">
+                    <div class="well">
+                      <h2>Arctic Areas</h2>
+                      <ul>
+                        <li><a href="#">Area 1</a></li>
+                        <li><a href="#">Area 2</a></li>
+                      </ul>
+                      <h2>Antarctic Areas</h2>
+                      <ul>
+                        <li><a href="#">Area 1</a></li>
+                        <li><a href="#">Area 2</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="areadiv hidden" id="{{ dataset.id ~ 'areaDrawDiv'}}">
+                    <div class="well">
+                        <p class="muted">Click on the map and draw a polygon to select an area for download.</p>
+                    </div>
+                </div>-->
+              
+          </div>  <!-- end location form section -->
+        </div>       
+
+        <div class="time-get-wrap">
+            
+            <div class="time-filters col-xs-12 form-group form-section">
+                    
+                    <h3>Dates</h3>
+
+                    <div class="datasetDateRange"><span id="{{dataset.id~'-dataset-time-min'}}" value="{{dataset.time.start}}" data-dataset-time-min="{{dataset.time.startiso}}">Available from {{dataset.time.startstr}}</span> to <span id="{{dataset.id~'-dataset-time-max'}}" value="{{dataset.time.end}}" data-dataset-time-max="{{dataset.time.endiso}}">{{dataset.time.endstr}}</span></div>
+
+                    <div class="dateValidationErrors validationError hidden"></div>
+                    {# Date Radios #}
+                    <div class="dateSelect" style="width: auto;">          
+                      {% for dateoption in dataset.dateOptions %}
+
+                        {% if loop.first %} 
+                        <!-- Selected Radio -->
+                          <div class="radio">
+                            <label><input type="radio" name="timeradio" value="{{dateoption.radioValue}}" data-datereq-min="{{dateoption.radioDateText}}" data-datereq-max="{{dataset.time.endstr}}" data-datereq-iso-min="{{dateoption.radioReqMin}}" data-datereq-iso-max="{{dateoption.radioReqMax}}" checked>{{dateoption.radioMainText}}<span class="atooltip" data-toggle="tooltip" data-placement="right" title="{{dateoption.radioDayCountText}}" ><i class="fa fa-info-circle" aria-hidden="true"></i></span></label>
+                          </div>
+                        {% else %} 
+                        
+                        <!-- Unselected Radio -->
+                          <div class="radio" >
+                            <label><input type="radio" name="timeradio" value="{{dateoption.radioValue}}" data-datereq-min="{{dateoption.radioDateText}}" data-datereq-max="{{dataset.time.endstr}}" data-datereq-iso-min="{{dateoption.radioReqMin}}" data-datereq-iso-max="{{dateoption.radioReqMax}}">{{dateoption.radioMainText}}<span class="atooltip" data-toggle="tooltip" data-placement="right" title="{{dateoption.radioDayCountText}}" ><i class="fa fa-info-circle" aria-hidden="true"></i></span></label>
+                          </div>
+                        {% endif %} 
+                      {% endfor %}  
+                      <!-- Unselected Radio -->
+                      <div class="radio">
+                        <label><input type="radio" name="timeradio" value="custom">Custom <i class="fa fa-angle-down" aria-hidden="true"></i></label>
+                      </div>    
+                   </div>
+
+                    {# Custom Date Selector Html #}
+                   
+                    <div class="dateCustom hidden">
+                      <div id="{{ dataset.id ~ 'timeInput'}}">
+                        
+                        <div class="row">
+
+                          <div class="time-min-wrap pull-left">
+                           <input type='text' alt="getdata-time-min" class="form-control time-min-input" id="{{dataset.id~'-getData-time-min'}}" data-datereq-iso-min="{{dataset.dateOptions[0].radioReqMin}}"/>
+                            <i class="time-min-validationIcon" aria-hidden="true"></i>
+                            <span class="dim-input-dash">to</span>
+                          </div>
+
+                          <div class="time-max-wrap pull-left">
+                            <input type='text' alt="getdata-time-max" class="form-control time-max-input" id="{{dataset.id~'-getData-time-max'}}" data-datereq-iso-max="{{dataset.dateOptions[0].radioReqMax}}"/>
+                            <i class="time-max-validationIcon" aria-hidden="true"></i>
+                          </div>
+
+                          <div class="time-stride-wrap pull-right">
+                            <span id="{{ dataset.id ~ '-getData-time-stride-btn'}}" class="time-stride-btn">Add Stride </span>
+                            <div id="{{ dataset.id ~ '-getData-time-stride-input'}}" class="time-stride-input hidden">
+                              <div class="stride-label">Stride: </div><input alt="time-stride" id="{{ dataset.id ~ '-getData-time-stride'}}" name="time-stride" 
+                            type="text" value="1" placeholder="1" class="form-control"/><span class="atooltip" data-toggle="tooltip" data-placement="top" title="Stride: 1 = get every value, 2 = get every other value, 3 = get every third value..." ><i class="fa fa-info-circle" aria-hidden="true"></i></span>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <div class="dateSelectedSuccess hidden"></div>
+                        <div class="minDateError validationError hidden"></div>
+                        <div class="maxDateError validationError hidden"></div>
+          
+                      </div>
+                    </div>
+                                                      
+              </div>
+          </div>     
+
+          <!-- Parameter Select Area -->
+          {% if dataset.parameters|length > 0 %}
+          
+            <div class="parameters-filters col-xs-12 form-section">
+              <h3>Parameters</h3>
+              <div class="varsErrors validationError hidden"></div>   
+              <div class="parameterSelect">
+              {% for parameter in dataset.parameters %}
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="{{parameter.name}}" checked>{{parameter.name}}</label>
+                  </div>
+              {% endfor %}  
+              </div>  
+            </div>
+          
+          {% endif %} 
+          
+          <!-- Format Select Area -->
+            <div id="{{ dataset.id ~ '-format-filters'}}" class="format-filters col-xs-12 form-section">
+              <h3>Format</h3>
+              <div class="format-tagline"><a href="https://polarwatch.noaa.gov/erddap/griddap/{{dataset.id}}.html">Use ERDDAP for more formats</a></div>
+              <div class="formatSelect">
+                <select id="{{ dataset.id ~ '-getDataFormat'}}" class="getdataformat form-control" style="width: auto;">          
+                  <option value="nc">NetCDF [ .nc ]</option>
+                  <option value="mat">Matlab [ .mat ]</option>
+                  <option value="largePng">PNG Image [ .png ]</option> 
+                </select>
+              </div>
+            </div>
+          
+          <button class="btn btn-primary btn-lg downloadFormSubmitBtn"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
+          <button class="btn btn-default btn-lg downloadFormSubmitBtn"><i class="fa fa-eye" aria-hidden="true"></i> View Url</button>
+          <div class="erddapUrlDisplay hidden"></div>
+    </form>
+    {% else %}
+    <div class="inactiveDatasetMessage alert alert-warning hidden">Sorry, previews of this dataset are not available at the moment. Data is currently inaccessible from the data provider server.</div>
+    {% endif %}
+</div>
+
+<div class="sizeEstimateNetCDF hidden col-md-5">
+            
+  <p class="sizeEstimate"></p>
+  
+  <div class="size-help hidden">
+    
+      <div class="xl-size-help hidden">
+      <p class="alert-text"><i class="fa fa-exclamation-triangle"></i> Use the form to refine your area and time frame of interest. The current download would exceed the 2 GB limit of this interface, either use the form to refine the request or use an alternate access method.</p>
+      </div>
+    
+    <div class="help-text">
+      <h2>Using the form to reduce size</h2>
+      <h3>Reducing the spatial coverage area</h3>
+      <p>If a dataset has global coverage but you are interested in only the Arctic, increasing the lower latitude value on the form to 60 would reduce your request size by more than half.</p>
+    
+      <h3>Reducing the number of timestamps</h3>
+      <p>If you have selected a large time range, consider breaking the download into multiple requests of shorter time lengths.</p>
+      
+      <h3>Setting a stride interval</h3>
+      <p>Stride can be used as a reduction factor for spatial and time dimensions. A stride of two provides every other data point along the dimension, a stride of 3 provides every third data point and so on. Stride can be useful for previewing and taking a quick look at a dataset.</p>    
+    </div>
+
+    {% if dataset.filesUrl != '' %}
+    <div class="help-text">  
+      <h2>Alternate access</h2>
+      <ul>
+        <li><a href="{{dataset.filesUrl}}" target="_blank">{{dataset.filesUrlText}}</a></li>
+      </ul>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+<div class="submitError col-xs-12 validationError hidden"></div> 
+<div class="col-md-12 downloadSidebar">
+
+  <div class="sidebarSection dataset-details row">
+    <div class="col-xs-12">
+      <h2>{{dataset.subname}} {{entry.entryName}}</h2>
+      <h3>Date Range</h3>
+      {% if dataset.time is defined %}
+      <div class="sidebar-detail-value">{{dataset.time.start}} - {{dataset.time.end }}</div>
+      {% else %}
+        try to use dates from all datasets</div></li>
+      {% endif %}
+      <h3>Source</h3>
+      <div class="sidebar-detail-value">{{entry.providerCredit}}</div>
+      <h3>Dataset Id</h3>
+      <div class="sidebar-detail-value">{{dataset.id}}</div>
+      <h3>Description</h3>
+      <div class="sidebar-detail-value">{{dataset.summary}}</div>
+    </div>
+  </div>
+
+  <div class="sidebarSection more-info row">
+    <div class="col-sm-4 col-sm-offset-2">
+      <h2>More Information</h2>
+      <ul class="list-group">
+          <li class="list-group-item"><a href="https://polarwatch.noaa.gov/erddap/griddap/{{dataset.id}}.graph"><i class="fa fa-star-o" aria-hidden="true"></i>View in ERDDAP</a></li>
+          <li class="list-group-item"><a href="https://polarwatch.noaa.gov/erddap/subscriptions/add.html?datasetID={{dataset.id}}&showErrors=false&email="><i class="fa fa-envelope-o" aria-hidden="true"></i>Get updates about this dataset</a></li>
+          <li class="list-group-item"><a href="https://polarwatch.noaa.gov/erddap/info/{{dataset.id}}/index.html"><i class="fa fa-id-card-o" aria-hidden="true"></i>View Metadata</a></li>
+          {% if dataset.bulkDownloadText|length > 0 %}
+           <li class="list-group-item"><a href="{{ dataset.bulkDownloadUrl }}"><i class="fa fa-folder-o" aria-hidden="true"></i>{{ dataset.bulkDownloadText}}</a></li>
+          {% endif %}
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <h2>Tutorials</h2>
+      <ul class="list-group">
+        <li class="list-group-item"><i class="fa fa-angle-right" aria-hidden="true"></i><a href="https://polarwatch.noaa.gov/training/examples/basic-polygon-access-visualization">Using python to access data</a></li>
+        <li class="list-group-item"><i class="fa fa-angle-right" aria-hidden="true"></i><a href="https://polarwatch.noaa.gov/node/49">Forming valid data requests</a></li>
+        <li class="list-group-item"><i class="fa fa-angle-right" aria-hidden="true"></i><a href="https://polarwatch.noaa.gov/training/data-request-and-polar-plot">Request data and make a polar plot</a></li>
+        </ul>
+    </div>
+  </div>
+
+  {% if entry.relatedDatasets|length > 0 %}
+  <div class="sidebarSection related-datasets row">
+    <div class="col-md-4 col-md-offset-4">
+      <h2>Related Datasets</h2>
+      <ul class="list-group">
+        {% for relDataset in entry.relatedDatasets %}
+        <li class="list-group-item"><i class="fa fa-angle-right" aria-hidden="true"></i><a href="{{ relDataset.url }}">{{relDataset.text}}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %} 
+
+</div>

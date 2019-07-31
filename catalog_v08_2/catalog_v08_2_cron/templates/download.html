@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>{{ title }}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<link rel="shortcut icon" href="../../css/favicon.png">
+<link rel="stylesheet" href="../../css/paper.css" type="text/css" >
+<link rel="stylesheet" href="../../css/bootstrap-datetimepicker.min.css" type="text/css" >
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+<link href="../../css/catalog_{{version_number}}.css" rel="stylesheet">
+<link href="../../css/dataset_{{version_number}}.css" rel="stylesheet">
+<link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://polarwatch.noaa.gov/sites/all/libraries/superfish/css/superfish.css">
+
+<script src="../../lib/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script type="text/javascript" src="../../js/common_{{version_number}}.js"></script>
+<script type="text/javascript" src="../../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="../../js/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="../../js/moment-timezone-with-data.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../../js/datasetDownload_{{version_number}}.js"></script>
+<script type="text/javascript" src="../../js/datasetDownloadProjectionTest_{{version_number}}.js"></script>
+<!-- The line below is needed for old environments like Internet Explorer and Android 4.x -->
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+
+</head>
+
+<body class="dataset-page">
+
+<header class="navbar navbar-inverse container-fluid" id="navbar" role="banner">
+  <div class="navbar-header">
+  <div class="region region-navigation">
+    <a class="logo navbar-btn pull-left" href="https://polarwatch.noaa.gov/" title="Home" rel="home">
+    <img src="https://polarwatch.noaa.gov/themes/pwtheme/noaa_logo_circle_38.svg" alt="Home" />
+    </a>
+    <a class="name navbar-brand" href="/" title="Home" rel="home">PolarWatch</a>
+    <section id="block-mainnavigation-2" class="block block-superfish block-superfishmain clearfix">
+    <ul id="superfish-main" class="menu sf-menu sf-main sf-horizontal sf-style-none">
+
+    <li id="main-menu-link-contentad21dab3-b481-491a-a665-c2dc7722e2bf"
+   class="sf-depth-1 menu-list-item sf-no-children"><a href="https://polarwatch.noaa.gov/about" class="sf-depth-1">About</a></li><li id="main-menu-link-contenta28f6c6c-d747-4e9f-9ca9-8ad2311d508f"
+   class="sf-depth-1 menu-list-item sf-no-children"><a href="https://polarwatch.noaa.gov/catalog" title="Find and download datasets" class="sf-depth-1 is-active">Data Catalog</a></li>
+    <li id="main-menu-link-content37c3f82b-81ce-48ad-9246-f86757ab46b1"
+   class="active-trail sf-depth-1 menu-list-item sf-no-children"><a href="/training" class=" sf-depth-1">Training</a></li>
+    </ul>
+    </section>
+  </div>
+  </div>
+</header>
+
+
+{# html for warning too big Modal# } -->
+<div class="modal fade" id="downloadSizeAlertModal" tabindex="-1" role="dialog" aria-labelledby="downloadSizeModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="downloadSizeModal"></h2>
+      </div>
+      <div class="modal-body">
+        <p style="text-align:center">You have requested a large <span class="requestSizeValue"></span> MB file. <br>This may take a while depending on your connection speed. Click the button below and your download will start in a new tab.<br><br>
+        <button type="button" class="btn btn-primary download-confirm-btn">Yes, download <span class="requestSizeValue"></span> MB file</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid datasetView">
+  
+    <div class=" row">
+        <div class="col-sm-12 entryTitle">
+            <h1 class="dataViewTitle">{{entry.entryName}}</h1>
+            <ul class="nav nav-tabs" id="datasetIdActions">
+                <li id="plotButton"><a href="../preview"><i class="fa fa-globe"></i>Preview</a></li>
+                <li class="active" id="downloadButton"><a href="#"><i class="fa fa-download"></i>Download</a></li> 
+            </ul>
+        </div>
+    </div>
+
+    <div class="row main-content ">
+
+        <div class="col-md-12 previewSidebarFirst" >
+        </div>
+
+        <div>
+          <div id="downloadPanel" >
+
+          {% if entry.firstValidDataset == -1 %}
+
+          <p> Sorry these datasets are not currently available. This can occur when a data provider's remote server is inaccesible. See the links below for links to the data provider server.</p>
+        
+          {% else %}
+            <div class="row downloadFormHeader">
+              <div class="col-md-5 col-md-offset-1">
+
+    
+                <div class="downloadPageTagLine">
+                  <p>Choose your area and time frame of interest.</p>
+                </div>
+
+                <!-- Dataset Tabs -->
+                <ul class="subEntryTabs nav nav-pills nav-justified" role="tablist">
+                    {% for dataset in entry.datasets %}
+
+                      {% if loop.index == (entry.firstValidDataset +1) %}
+                          <li role="presentation" class="active" id="{{dataset.id~"-tab"}}"><a href="{{ '#' ~ dataset.id ~ 'panel' }}" aria-controls="{{dataset.id ~ 'panel' }}" role="tab" data-toggle="pill">{{ dataset.subname }}</a></li>
+                      {% else %} 
+                        {% if dataset.inERDDAP == 1 %}
+                        <li role="presentation" id="{{dataset.id~'-tab'}}"><a href="{{ '#' ~ dataset.id ~ 'panel' }}" aria-controls="{{ dataset.id ~ 'panel' }}" role="tab" data-toggle="pill">{{ dataset.subname }}</a></li>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <div class="row tab-content" >
+                {% for dataset in entry.datasets %}
+                         
+                  {% if loop.index == (entry.firstValidDataset + 1) %}
+                    <div role="tabpanel" class="tab-pane active" id="{{ dataset.id ~ 'panel' }}">
+                  {% else %}   
+                    {% if dataset.inERDDAP == 1 %}
+                      <div role="tabpanel" class="tab-pane" id="{{ dataset.id ~ 'panel' }}">
+                    {% endif %}
+                  {% endif %} 
+                  
+                  {% if dataset.inERDDAP == 1 %}
+                    {% include 'downloadPanel.html' %} 
+                  {% endif %}
+                  </div>
+                  
+                {% endfor %}
+            </div><!-- end tab content -->
+
+            {% endif %}
+          </div>
+
+          <p class="pageTimeStamp">{{entry.pageWritten}}</p>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

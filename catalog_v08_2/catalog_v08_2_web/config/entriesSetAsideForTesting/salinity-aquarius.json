@@ -1,0 +1,104 @@
+{
+"entryName":"Salinity from Aquarius",
+"entryId":"salinity-aquarius",
+"providerCredit":"NASA GSFC OBPG",
+"displayName":"Salinity",
+"activeTab":"1",
+"iceDisplay":"1",
+"makeEntryFlag":"",
+"erddapVarName":"",
+"mapUnits":"PSS",
+"parameterTags":["sal"],
+"weightFactors":[{
+  "source":"0",
+  "parameter":"3",
+  "quality":"3"
+}],
+"ids":[
+	"jplAquariusSSSDailyV5",
+ 	"jplAquariusSSS7DayV5", 
+ 	"jplAquariusSSSMonthlyV5", 
+ 	"jplAquariusSSS3MonthV5"
+ ],
+"datasets":[{
+  "id":"jplAquariusSSSDailyV5",
+  "subname":"Daily",
+  "parameters":[{
+            "name":"sss",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"40",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+                }
+              }
+            ],
+    "processLevel":"Level 3",
+    "qualityLevel":"NRT",
+    "dataType": "Satellite",
+},{
+  "id":"jplAquariusSSS7DayV5",
+  "subname":"Weekly",
+  "parameters":[{
+            "name":"sss",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"40",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+                }
+              }
+            ],
+    "processLevel":"Level 3",
+    "qualityLevel":"NRT",
+    "dataType": "Satellite",
+},{
+  "id":"jplAquariusSSSMonthlyV5",
+  "subname":"Monthly",
+  "parameters":[{
+            "name":"sss",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"40",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+                }
+              }
+            ],
+    "processLevel":"Level 3",
+    "qualityLevel":"NRT",
+    "dataType": "Satellite",
+},{
+  "id":"jplAquariusSSS3MonthV5",
+  "subname":"Quarterly",
+  "parameters":[{
+            "name":"sss",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"40",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+                }
+              }
+            ],
+  "processLevel": "Level 3",
+  "qualityLevel": "NRT",
+  "dataType": "Satellite",
+}],
+"threddsWmsUrls":[
+],
+"erddapUrls":[
+  "",
+  "",
+  "",
+  ""
+]
+}

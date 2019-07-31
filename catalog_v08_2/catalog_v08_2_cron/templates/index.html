@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>{{ title }}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../css/favicon.png">
+<link rel="stylesheet" href="../css/paper.css" type="text/css" >
+<link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+<link href="../css/catalog.css" rel="stylesheet">
+<link href="../css/dataset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet">
+<link rel="stylesheet" href="https://polarwatch.noaa.gov/sites/all/libraries/superfish/css/superfish.css">
+<script src="../lib/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+</head>
+
+<body class="dataset-page">
+
+<header class="navbar navbar-inverse container-fluid" id="navbar" role="banner">
+  <div class="navbar-header">
+  <div class="region region-navigation">
+    <a class="logo navbar-btn pull-left" href="https://polarwatch.noaa.gov/" title="Home" rel="home">
+    <img src="https://polarwatch.noaa.gov/themes/pwtheme/noaa_logo_circle_38.svg" alt="noaa logo" />
+    <a class="name navbar-brand" href="/" title="Home" rel="home">PolarWatch</a>
+    <section id="block-mainnavigation-2" class="block block-superfish block-superfishmain clearfix">
+    <ul id="superfish-main" class="menu sf-menu sf-main sf-horizontal sf-style-none">
+
+    <li id="main-menu-link-contentad21dab3-b481-491a-a665-c2dc7722e2bf"
+   class="sf-depth-1 menu-list-item sf-no-children"><a href="https://polarwatch.noaa.gov/about" class="sf-depth-1">About</a></li><li id="main-menu-link-contenta28f6c6c-d747-4e9f-9ca9-8ad2311d508f"
+   class="sf-depth-1 menu-list-item sf-no-children"><a href="https://polarwatch.noaa.gov/catalog" title="Find and download datasets" class="sf-depth-1 is-active">Data Catalog</a></li>
+    <li id="main-menu-link-content37c3f82b-81ce-48ad-9246-f86757ab46b1"
+   class="active-trail sf-depth-1 menu-list-item sf-no-children"><a href="/training" class=" sf-depth-1">Training</a></li>
+    </ul>
+    </section>
+  </div>
+  </div>
+</header>
+
+<div class="container-fluid datasetView">
+  
+    <div class="row">
+        <div class="col-sm-12 entryTitle" >
+            <h1 class="dataViewTitle">{{entry.entryName}}</h1>
+            <ul class="nav nav-tabs" id="datasetIdActions">
+              <li class="active" id="summaryButton"><a href="./" ><i class="fa fa-home"></i>Summary</a></li>
+              <li id="plotButton"><a href="./preview"><i class="fa fa-globe"></i>Preview</a></li>
+                <li id="downloadButton"><a href="./download"><i class="fa fa-download"></i>Download</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row main-content ">
+
+        <div class="col-md-12 previewSidebarFirst" > 
+            
+        </div>
+              
+        <div class="col-md-9 entrySummaryMain">
+                  
+              <div class="row" >
+
+                  <div class="col-lg-8">
+
+                    {% if entry.pwSummary|length > 0 %}
+
+                     <div class="entrySummary">
+                       <p>{{ entry.pwSummary[0] }}</p>
+                     </div>
+                    
+                    {% endif %}
+                    
+                    <div class="datasetSummaries">
+                    
+                      {% for dataset in entry.datasets %}
+                    
+                            {% if loop.last %}
+                            <div class="col-sm-12 datasetSummaryCol last" >
+                            {% else %}
+                            <div class="col-sm-12 datasetSummaryCol" >
+                            {% endif %}
+
+                            <div class="datasetSummaryColContent row">
+                              
+                              <div class="summary-card-header">
+                                  <h2 class="datasetSummaryTitle">{{ dataset.subname }}</h2>
+                                  <ul class="datasetSummaryActions list-inline">
+                                      {% if dataset.inERDDAP == 1 %}
+                                      <li><a class="btn btn-default" href="./download/?dataset={{ dataset.subname|lower }}"><i class="fa fa-download" aria-hidden="true"></i> Download</a></li>
+                                      <li><a class="btn btn-default" href="./preview/?dataset={{ dataset.subname|lower }}"><i class="fa fa-globe" aria-hidden="true"></i>Preview</a></li>
+                                      {% endif %}
+                                      <li><a class="btn btn-default" href="https://polarwatch.noaa.gov/erddap/info/{{dataset.id}}/index.html"><i class="fa fa-info-circle" aria-hidden="true"></i>More Details</a></li>
+                                      
+                                  </ul>
+                              </div>
+
+                              <div class="col-sm-2">
+
+                                {% if dataset.inERDDAP == 1 %}
+                                            
+                                  <div class="datasetThumbnails center-block">
+                                    {% for plot in entry.plotList %}
+                                    <img class="summaryImage" src="../images/{{entry.entryId}}-{{dataset.subname}}-{{plot}}300.png"/>
+                                    {% endfor %}
+                                  </div>
+                                  <p class="datasetThumbnailCaption">Latest {{dataset.subname}} Data | {{dataset.time.endstr}}</p>
+                                {% else %}
+                                  <div class="well no-images">Images not available, this dataset could not be accessed from the remote server.</div>
+                                {% endif %}
+
+                              </div>
+                              
+                              <div class="col-sm-10">
+                                
+                                {% if dataset.time is defined %}
+                                {% if dataset.time.start is defined %}
+                                <div class="row">
+                                
+                                  <div class="col-sm-12">
+                                    <ul class="list-group summaryList">
+                                      <li class="list-group-item"><div class="listkey">Available Dates</div><div class="listval">
+                                        {{dataset.time.start}} - {{dataset.time.end }}</div></li>
+                                      <li class="list-group-item"><div class="listkey">Update Frequency</div><div class="listval">{{ dataset.updateInt }}</div></li>
+                                      {% if dataset.proj_crs_code is defined %}
+                                        {% if dataset.proj_crs_code == "EPSG:3426" %}
+                                          <li class="list-group-item">
+                                            <div class="listkey">Spatial Resolution (at 70&deg;)</div>
+                                            {% if dataset.ycoord.resolution_val == dataset.xcoord.resolution_val %}
+                                              <div class="listval">{{dataset.ycoord.resolution_str }}</div>
+                                            {% else %}
+                                              <div class="listval">Latitude: {{ dataset.ycoord.resolution_str }}, Longitude: {{ dataset.xcoord.resolution_str }} </div>
+                                            {% endif %}
+                                          </li>
+                                        {% else %}
+                                          <li class="list-group-item">
+                                            <div class="listkey">Spatial Resolution</div>
+                                            {% if dataset.ycoord.resolution_val == dataset.xcoord.resolution_val %}
+                                              <div class="listval">{{ dataset.ycoord.resolution_val }} {{dataset.ycoord.resolution_units }}</div>
+                                            {% else %}
+                                              <div class="listval">{{dataset.ycoord.name}}: {{ dataset.ycoord.resolution_val }} {{dataset.ycoord.resolution_units }}, {{dataset.xcoord.name}}: {{dataset.xcoord.resolution_val}} {{ dataset.xcoord.resolution_units }} </div>
+                                            {% endif %}
+                                          </li>
+                                        {% endif %}
+                                      {% else %}
+                                         <li class="list-group-item">
+                                          <div class="listkey">Spatial Resolution</div>
+                                          {% if dataset.ycoord.resolution_val == dataset.xcoord.resolution_val %}
+                                            <div class="listval">{{ dataset.ycoord.resolution_val }} {{dataset.ycoord.resolution_units }}</div>
+                                          {% else %}
+                                            <div class="listval">{{dataset.ycoord.name}}: {{dataset.ycoord.resolution_val }} {{dataset.ycoord.resolution_units}}, {{dataset.xcoord.name}}: {{dataset.xcoord.resolution_val}} {{dataset.xcoord.resolution_units}}</div>
+                                          {% endif %}
+                                        </li>
+                                      {% endif %}
+
+                                      {% if dataset.parameters|length > 0 %}
+                                      
+
+                                      <li class="list-group-item"><div class="listkey">Parameters</div>
+                                        <div class="listval">
+                                          <ul>
+                                          {% for parameter in dataset.parameters %}
+                                          <li>{{parameter.name}}</li>
+                                          {% endfor %}
+                                          </ul>
+                                        </div>
+                                      </li>
+                                      {% endif %} 
+
+                                      <li class="list-group-item"><div class="listkey" >Source</div><div class="listval" >{{ dataset.source }}</div></li>
+                                      
+                                    </ul>   
+                                  </div>
+                                </div>
+                                {% endif %}
+                                {% endif %}
+                              </div>
+                              
+                            </div>
+                          </div>
+                      {% endfor %} 
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 datasetSummarySidebar" style="padding:0px 20px;">
+                  
+                    {% if entry.relatedDatasets|length > 0 %}
+                      <div class="sidebarSection">
+                        <h2>Related Datasets</h2>
+
+                        <ul class="list-group">
+                      
+                            {% for relDataset in entry.relatedDatasets %}
+                            <li class="list-group-item"><i class="fa fa-angle-right" aria-hidden="true"></i><a href="{{ relDataset.url }}">{{relDataset.text}}</a></li>
+                            {% endfor %}
+                        </ul>
+                      </div>
+                    {% endif %} 
+                    <div class="sidebarSection">
+                      <h2>Tutorials</h2>
+                      <ul class="list-group">
+                        <li class="list-group-item"><i class="fa fa-angle-right" aria-hidden="true"></i><a href="https://polarwatch.noaa.gov/training/examples/basic-polygon-access-visualization">Using python to access data</a></li>
+                      </ul>
+                    </div>
+                  </div>
+
+              </div> 
+              <p class="pageTimeStamp">Updated: {{entry.pageWritten}}</p> 
+        </div>
+    </div>  
+</div>
+</div>
+</body>
+</html>

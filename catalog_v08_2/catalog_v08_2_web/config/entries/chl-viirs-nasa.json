@@ -1,0 +1,102 @@
+{
+"entryName":"Chlorophyll from NASA VIIRS Near-Real-Time",
+"entryId":"chl-VIIRS-NASA",
+"providerCredit":"NASA GSFC OBPG",
+"displayName":"Chlorophyll",
+"makeEntryFlag":"0",
+"erddapVarName":"",
+"activeTab":"0",
+"iceDisplay":"1",
+"mapUnits":"&micro;g/L",
+"parameterTags":["color"],
+"regions":[{
+    "arctic":1,
+    "antarctic" :1,
+    "alaska":1,
+    "global":1
+}],
+"weightFactors":[{
+  "source":"4",
+  "parameter":"3",
+  "quality":"3"
+}],
+"ids":[
+	"erdVH2018chla1day",
+	"erdVH2018chla8day",
+	"erdVH2018chlamday"
+],
+"datasets":[
+    {
+    "id":"erdVH2018chla1day",
+    "subname":"Daily",
+    "parameters":[{
+            "name":"chla",
+            "colorbar":{
+                "colorbarmin":"0.001",
+                "colorbarmax":"10",
+                "logscale":"TRUE",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_algae"
+            }
+        }]
+    },{
+    "id":"erdVH2018chla8day",
+    "subname":"Weekly",
+    "parameters":[{
+            "name":"chla",
+            "colorbar":{
+                "colorbarmin":"0.001",
+                "colorbarmax":"10",
+                "logscale":"TRUE",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_algae"
+            }
+        }]
+    },{
+    "id":"erdVH2018chlamday",
+    "subname":"Monthly",
+    "parameters":[{
+            "name":"chla",
+            "colorbar":{
+                "colorbarmin":"0.001",
+                "colorbarmax":"10",
+                "logscale":"TRUE",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_algae"
+            }
+        }]
+    }
+],
+"subNames":[
+	"Daily",
+	"Weekly",
+	"Monthly"
+],
+"processLevel":[
+    "Level 3",
+    "Level 3",
+    "Level 3"
+],
+"qualityLevel":[
+    "near-real-time",
+    "near-real-time",
+    "near-real-time"
+],
+"dataType":[
+    "satellite",
+    "satellite",
+    "satellite"
+],
+"pwSummary":["This is 4km resolution science-quality chlorophyll-a concentration data from NASA's SUOMI-NPP Spacecraft. Daily, weekly and monthly versions are available from Jan 2012 ending Dec 01, 2017 and have global coverage."],
+"relatedDatasets":[
+{
+  "url":"https://polarwatch.noaa.gov/erddap/griddap/nesdisVHNSQchlaDaily.graph",
+  "text":"NOAA VIIRS Science Quality Chlorophyll"
+},{
+    "url":"https://polarwatch.noaa.gov/erddap/griddap/nesdisVHNchlaDaily.graph",
+    "text":"NOAA VIIRS NRT Chlorophyll"
+}]
+}

@@ -1,0 +1,117 @@
+{
+"activeTab":"0",
+"entryName":"Sea Surface Temperature from OSTIA",
+"entryId":"sst-OSTIA",
+"displayName":"Sea Surface Temperature",
+"iceDisplay":"1",
+"makeEntryFlag":"0",
+"erddapVarName":"",
+"mapUnits":"&deg;C",
+"parameterTags":["wtemp"],
+"providerCredit":"NASA JPL",
+"pwSummary":["This is 4-km resolution sea surface temperture analysis data from the GHRSST provided by the UK Met office. Daily data is available from 2013 to present and has global coverage."],
+"regions":[{
+    "arctic":1,
+    "antarctic":1,
+    "alaska":1,
+    "global":1
+}],
+"weightFactors":[{
+  "source":"0",
+  "parameter":"5",
+  "quality":"4"
+}],
+"ids":[
+	"jplUKMO_OSTIAv20"
+],
+"datasets":[
+    {
+    "id":"jplUKMO_OSTIAv20",
+    "subname":"Daily",
+    "parameters":[
+    	    {   "name":"analysed_sst",
+    		    "colorbar":{
+    		    	"colorbarmin":"-2",
+					"colorbarmax":"15",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_thermal"
+    		    }
+    		},{
+				"name":"analysis_error",
+    		    "colorbar":{
+    		    	"colorbarmin":"0",
+					"colorbarmax":"5",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"WhiteBlack"
+    		    }
+    		},{
+    			"name":"mask",
+    		    "colorbar":{
+    		    	"colorbarmin":"0",
+					"colorbarmax":"20",
+					"logscale":"FALSE",
+					"continuity":"d",
+					"sections":"10",
+					"palette":"WhiteRedBlack"
+    		    }
+    		},{
+    			"name":"sea_ice_fraction",
+    		    "colorbar":{
+    		    	"colorbarmin":"0",
+					"colorbarmax":"1",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_ice"	
+    		    }
+			}
+	],
+    "colorbars":[{
+		"colorbarmin":"-2",
+		"colorbarmax":"15",
+		"logscale":"FALSE",
+		"continuity":"",
+		"sections":"",
+		"palette":"KT_thermal"
+		},{
+		"colorbarmin":"0",
+		"colorbarmax":"5",
+		"logscale":"FALSE",
+		"continuity":"",
+		"sections":"",
+		"palette":"WhiteBlack"
+		},{
+		"colorbarmin":"0",
+		"colorbarmax":"20",
+		"logscale":"FALSE",
+		"continuity":"d",
+		"sections":"10",
+		"palette":"WhiteRedBlack"
+		},{
+		"colorbarmin":"0",
+		"colorbarmax":"1",
+		"logscale":"FALSE",
+		"continuity":"",
+		"sections":"",
+		"palette":"KT_ice"	
+		}
+	]
+    }
+],
+"subNames":[
+	"Daily"
+],
+"processLevel":[
+	"level 4"
+],
+"qualityLevel":[
+	"near-real-time"
+],
+"dataType":[
+    "analysis"
+]
+}

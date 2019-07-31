@@ -1,0 +1,113 @@
+{
+"entryName":"Sea Surface Height from AVISO",
+"entryId":"ssh-aviso",
+"providerCredit":"French Space Agency, NASA",
+"regions":[{
+    "arctic":1,
+    "antarctic":1,
+    "alaska":1,
+    "global":1
+}],
+"ids":[
+	"erdTAssh1day_LonPM180", 
+	"erdTAsshmday_LonPM180"
+],
+"datasets":[
+	{
+        "id":"erdTAssh1day_LonPM180",
+        "subname":"Daily",
+        "bulkDownloadUrl":"http://oceanwatch.pfeg.noaa.gov/thredds/catalog.html",
+        "bulkDownloadText":"Download in Bulk",
+        "parameters":[
+        	{   "name":"ssh",
+        		"colorbar":
+        			{
+					"colorbarmin":"-2",
+					"colorbarmax":"2",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_balance"
+					}
+
+        	},{
+        		"name":"sshd",
+        		"colorbar":
+	        		{
+	        		"colorbarmin":"-2",
+					"colorbarmax":"2",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_balance"
+	        		}
+        	}]
+    }, {
+      "id":"erdTAsshmday_LonPM180",
+      "subname":"Monthly",
+      "bulkDownloadUrl":"http://oceanwatch.pfeg.noaa.gov/thredds/catalog.html",
+      "bulkDownloadText":"Download in Bulk",
+      "parameters":[
+        	{   "name":"ssh",
+        		"colorbar":
+        			{
+					"colorbarmin":"-2",
+					"colorbarmax":"2",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_balance"
+					}
+
+        	},{
+        		"name":"sshd",
+        		"colorbar":
+	        		{
+	        		"colorbarmin":"-2",
+					"colorbarmax":"2",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_balance"
+	        		}
+        	}]
+    }
+],
+"subNames":[
+	"Daily", 
+	"Monthly"
+],
+"displayName":"Sea Surface Height",
+"activeTab":"0",
+"processLevel":[
+	"Level 4",
+	"Level 4"
+],
+"qualityLevel":[
+	"near-real-time",
+	"near-real-time"
+],
+"dataType":[
+    "satellite analysis",
+    "satellite analysis"
+],
+"iceDisplay":"1",
+"wmsLayerNames":[
+	"TAsshl",
+	"TAsshl"
+],
+"mapUnits":"meters",
+"makeEntryFlag":"0",
+"erddapVarName":"",
+"parameterTags":["ssh"],
+"weightFactors":[{
+  "source":"0",
+  "parameter":"3",
+  "quality":"3"
+}],
+"pwSummary":["This is 19-km science quality sea surface height data from AVISO. More recent data is available through the AVISO website."],
+"relatedDatasets":[{
+  "url":"https://polarwatch.noaa.gov/catalog_v04/ssh-noaa-sla/",
+  "text":"Experimental Sea Level Anomaly Data from NOAA"
+}]
+}

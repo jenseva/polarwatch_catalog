@@ -1,0 +1,84 @@
+.ross-sea .previewSidebarFirst{
+    padding-left:15px;
+} 
+.ross-sea .previewSidebarFirst h3 {
+    display: block;
+    color: #333;
+    font-weight: 400;
+    font-family: "Roboto";
+    padding-top:3px;
+}
+.ross-sea .entryList {
+    list-style: none;
+    padding-left:0px;
+    padding-top: 12px;
+}
+.ross-sea .entryList li {
+    font-size: 14px;
+    color: #005cb9;
+    text-transform: none;
+    font-weight: 600;
+    letter-spacing: 0px;
+    font-family: 'Open Sans';
+    padding-top: 0px;
+    padding-bottom:0px;
+}
+.ross-sea .entryList ul {
+    list-style: none;
+    padding-left: 0px;
+    padding-top:2px;
+    padding-bottom: 8px;
+}
+.ross-sea .entryList li li {
+    padding:4px 2px;
+    font-family: 'Roboto';
+    line-height: 1.3;
+    font-weight: 300;
+    font-size: 13px;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-top: 0px;
+}
+.ross-sea .entryList li li.active {
+    background: #005cb9; 
+    padding: 5px 5px 5px 5px;
+}
+.ross-sea .entryList li li a {
+    color: #666;
+}
+.ross-sea .entryList li li a:hover {
+    color: #333;
+    text-decoration: none;
+}
+.ross-sea .entryList li li a.nav-link {
+    padding: .3rem 0rem .3rem 0rem;
+}
+.ross-sea .entryList li li.active a,
+.ross-sea .entryList li li.active a:hover{
+     color: #fff;
+     margin-top:2px;
+ }
+.mapArea {
+    position: relative;
+    padding:0px;
+}
+.mapTitleArea {
+    position: absolute;
+    top: 16px;
+    background: rgba(255,255,255,0.7);
+}
+#plotPanel {
+    max-width: none;
+}
+/*Uses Bootstrap 4, needs tweaks */
+header.navbar {
+    padding: 0px 15px;
+}
+.navbar-brand {
+    padding-left:15px;
+    line-height: 23px;
+}
+#block-mainnavigation-2 {
+    position: relative;
+    width: auto;
+}

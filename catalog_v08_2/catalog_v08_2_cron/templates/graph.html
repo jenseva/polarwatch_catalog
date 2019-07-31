@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>{{ title }}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<link rel="shortcut icon" href="../../css/favicon.png">
+<!--<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" type="text/css" >-->
+<link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../css/paper.css" type="text/css" >
+<link rel="stylesheet" href="../../css/bootstrap-datetimepicker.min.css" type="text/css" >
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+<!--<link rel="stylesheet" href="../css/bootstrap-yeti.css" type="text/css" >-->
+<link href="../../css/catalog_{{version_number}}.css" rel="stylesheet">
+<link href="../../css/dataset_{{version_number}}.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://polarwatch.noaa.gov/sites/all/libraries/superfish/css/superfish.css">
+
+<!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+<script src="../../lib/jquery-3.3.1.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script type="text/javascript" src="../../js/datasetMap_{{version_number}}.js"></script>
+<script type="text/javascript" src="../../js/common_{{version_number}}.js"></script>
+
+<script type="text/javascript" src="../../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="../../js/moment-with-locales.min.js"></script>
+
+<script type="text/javascript" src="../../js/moment-timezone-with-data.min.js"></script>
+
+<script type="text/javascript" src="../../js/bootstrap-datetimepicker.js"></script>
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js"></script>-->
+
+<script type="text/javascript" src="../../js/leaflet-1.3.3/leaflet.js"></script>
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+<script type="text/javascript" src="../../js/L.Graticule.js"></script>
+<script type="text/javascript" src="../../lib/leaflet_antimeridian/Leaflet.Antimeridian.js" ></script>
+<script type="text/javascript" src="../../lib/Leaflet.MousePosition-master/src/L.Control.MousePosition.js" ></script>
+<link rel="stylesheet" href="../../js/leaflet-1.3.3/leaflet.css"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.13/leaflet.draw.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.13/leaflet.draw.css"/>
+<link rel="stylesheet" href="
+../../lib/Leaflet.MousePosition-master/src/L.Control.MousePosition.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.min.js"></script>
+<script src="https://unpkg.com/esri-leaflet@2.0.8/dist/esri-leaflet-debug.js"></script>
+
+
+
+</head>
+<body class="dataset-page">
+
+<header class="navbar navbar-inverse container-fluid" id="navbar" role="banner">
+  <div class="navbar-header">
+  <div class="region region-navigation">
+    <a class="logo navbar-btn pull-left" href="https://polarwatch.noaa.gov/" title="Home" rel="home">
+    <img src="https://polarwatch.noaa.gov/themes/pwtheme/noaa_logo_circle_38.svg" alt="Home" />
+    </a>
+    <a class="name navbar-brand" href="/" title="Home" rel="home">PolarWatch</a>
+    <section id="block-mainnavigation-2" class="block block-superfish block-superfishmain clearfix">
+    <ul id="superfish-main" class="menu sf-menu sf-main sf-horizontal sf-style-none">
+
+    <li id="main-menu-link-contentad21dab3-b481-491a-a665-c2dc7722e2bf"
+   class="sf-depth-1 menu-list-item sf-no-children"><a href="https://polarwatch.noaa.gov/about" class="sf-depth-1">About</a></li><li id="main-menu-link-contenta28f6c6c-d747-4e9f-9ca9-8ad2311d508f"
+   class="sf-depth-1 menu-list-item sf-no-children"><a href="https://polarwatch.noaa.gov/catalog" title="Find and download datasets" class="sf-depth-1 is-active">Data Catalog</a></li>
+    <!--<li id="main-menu-link-content97b0c74c-b06f-41ee-8e00-930f03963564"
+   class="sf-depth-1 menu-list-item sf-no-children"><a href="https://polarwatch.noaa.gov/data-server" class="sf-depth-1">Data Server</a></li>-->
+    <li id="main-menu-link-content37c3f82b-81ce-48ad-9246-f86757ab46b1"
+   class="active-trail sf-depth-1 menu-list-item sf-no-children"><a href="/training" class=" sf-depth-1">Training</a></li>
+    </ul>
+    </section>
+  </div>
+  </div>
+</header>
+
+
+
+
+<!-- Modal -->
+<!-- Leaving this for now, if Bob is going to do the 180 to 360 dataset option then we will use that instead of creating a system to generate and provide files ourselves -->
+<div class="modal fade" id="downloadConfModal" tabindex="-1" role="dialog" aria-labelledby="AntimeridianPopupModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="AntimeridianPopupModal"></h2>
+      </div>
+      <div class="modal-body">
+
+        <p>This dataset begins and ends at the antimeridian (180&deg;E/-180&deg;W) and the area you have selected crosses the antimeridian. We offer two options for downloading this area:  </p>
+        
+        <h3>Option 1: Download in two parts</h3>
+        <p> Two files that together contain data for the selected area, one file for each side of the antimeridian </p>
+            <div class="center-block" style="text-align: center">
+              <a class="btn btn-primary download-1-btn" href="#"  target="_blank" role="button">Download 1</a>
+              <a class="btn btn-primary download-2-btn" href="#" target="_blank" role="button">Download 2</a>
+            </div>
+            <div class="well">Visit the PolarWatch training page for methods to join the two downloads using a command line interface for manipulating NetCDF files. <a class="" href="https://polarwatch.noaa.gov/node/52"">View Example</a></div>
+        <h3>Option 2: Single file download</h3>
+        <p>One file with coverage restricted to the selected latitudes but with the full 360&deg; of longitudes.</p>
+        <a class="btn btn-primary download-all-btn" href="#" target="_self" role="button">Download</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid datasetView">  
+  <!--Dataset View-->
+  <div class=" row">
+    <div class="col-sm-12 entryTitle" >
+      <h1 class="dataViewTitle">{{entry.entryName}}</h1>
+    
+        {% if entry.firstValidDataset != -1 %}
+        <ul class="nav nav-tabs" id="datasetIdActions">
+          <!--<li id="summaryButton"><a href="../"><i class="fa fa-home"></i>Summary</a></li>-->
+          <li class="active" id="plotButton"><a href="#"><i class="fa fa-globe"></i> Preview</a>
+            <!--<div class="previewMenu">
+              <h3 class="first">Dataset</h3>
+              <div class="datasetTabWrapper">
+                    {# Create the Sub-Entry (Daily, Weekly Monthly) Tabs for the Plotting Section #}
+                    <ul class="subEntryTabs nav nav-pills" role="tablist">
+                    {% for dataset in entry.datasets %}
+                      {% if loop.first %}
+                      {# Create the active tab #}
+                        <li role="presentation" class="active" id="{{dataset.id~"-tab"}}"><a href="{{ '#' ~ dataset.id ~ 'graph-panel' }}" aria-controls="{{dataset.id ~ 'graph-panel' }}" id="firstSubEntryTab" role="tab" data-toggle="pill">{{ dataset.subname }}</a></li>
+                      
+                      {% else %} 
+                      {# Create the inactive tabs #}
+                        <li role="presentation" id="{{dataset.id~'-tab'}}"><a href="{{ '#' ~ dataset.id ~ 'graph-panel' }}" aria-controls="{{ dataset.id ~ 'graph-panel' }}" role="tab" data-toggle="pill">{{ dataset.subname }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                    </ul>
+              </div>
+              <div class="previewSidebarSection">
+                  <h3 class="first">Map View</h3>
+                  <ul class="map-projection nav nav-pills" role="tablist">
+                      <li role="presentation" class="active" id="epsg3031"><a href="#" role="tab" data-toggle="pill"> Antarctic</a></li>
+                      <li role="presentation" id="epsg3413"> <a href="#" role="tab" data-toggle="pill">Arctic</a></li>
+                      <li role="presentation" id="epsg4326"> <a href="#" role="tab" data-toggle="pill">Global</a></li>
+                      --><!--<li role="presentation" id="epsg3338"> <a href="#" role="tab" data-toggle="pill">Alaska</a></li>-->
+                  <!--</ul> 
+              </div>
+              <div class="previewSidebarSection last">
+                  <h3>Time</h3>
+                  {% for dataset in entry.datasets %}
+                    {% if loop.first %}  
+                      <div class="form-group map-time-selector" id="{{ dataset.id }}-map-time">
+                          <div class="btn btn-sm btn-primary time-prev-btn"><i class="fa fa-angle-left"></i></div>
+                          <div class='input-group date'>
+                              <input type="text" id="{{ dataset.id }}-datetimepicker" class="calendar form-control" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                          <div class="btn btn-sm btn-primary time-next-btn"><i class="fa fa-angle-right"></i></div>
+                          <div class="btn btn-sm btn-primary time-latest-btn"><i class="fa fa-angle-double-right"></i></div>
+                      </div>
+                    {% else %} 
+                      <div class="form-group map-time-selector hidden" id="{{ dataset.id }}-map-time">
+                          <div class="btn btn-sm btn-primary time-prev-btn"><i class="fa fa-angle-left"></i></div>
+                          <div class='input-group date'>
+                              <input type="text" id="{{ dataset.id }}-datetimepicker" class="calendar form-control" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                          <div class="btn btn-sm btn-primary time-next-btn"><i class="fa fa-angle-right"></i></div>
+                          <div class="btn btn-sm btn-primary time-latest-btn"><i class="fa fa-angle-double-right"></i></div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+              </div>
+            </div>-->
+          </li>
+
+          <li id="downloadButton"><div class="btn btn-block goToDownloadBtn"><i class="fa fa-download"></i> Download</div></li>
+        </ul>
+        {% endif %}
+    </div>
+  </div>  
+  
+  <div class="row main-content">
+
+    <div class="col-md-12 col-lg-12 previewSidebarFirst">
+    </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-12 previewArea">
+          {% if entry.firstValidDataset != -1 %}
+      
+            <div class="row previewMenuRow">
+              
+              <div class="previewMenu col-md-8">
+                <div class="previewMenuSection">
+                  <h3 class="first">Dataset</h3>
+                  <div class="datasetTabWrapper">
+                        {# Create the Sub-Entry (Daily, Weekly Monthly) Tabs for the Plotting Section #}
+                        <ul class="subEntryTabs nav nav-pills" role="tablist">
+                        {% for dataset in entry.datasets %}
+                              {% if dataset.inERDDAP == 1 %}
+                              {# Use js to set first created tab to active #}
+                              <li role="presentation" id="{{dataset.id~"-tab"}}"><a href="{{ '#' ~ dataset.id ~ 'graph-panel' }}" aria-controls="{{dataset.id ~ 'graph-panel' }}" role="tab" data-toggle="pill">{{ dataset.subname }}</a></li>
+                              {% else %}
+                              {# Create a tab, to show that this dataset should exist, use js to display error message #}
+                              <li role="presentation" class="active" id="{{dataset.id~"-tab"}}"><a class="disabled"  aria-disabled="true" aria-controls="{{dataset.id ~ 'graph-panel' }}" role="tab" data-toggle="pill">{{ dataset.subname }}</a></li>
+                              {% endif %}
+                         {% endfor %}
+                        </ul>
+                  </div>
+                </div>
+                <div class="previewMenuSection">
+                      <h3 class="first">Map View</h3>
+                      <ul class="map-projection nav nav-pills" role="tablist">
+                        {% for region in entry.regions %}
+                          {% if region.antarctic == 1 %}
+                            <li role="presentation" id="epsg3031"><a href="#" role="tab" data-toggle="pill"> Antarctic</a></li>
+                            {% endif %}
+                          {% if region.arctic == 1 %}  
+                            <li role="presentation" id="epsg3413"> <a href="#" role="tab" data-toggle="pill">Arctic</a></li>
+                            {% endif %}
+                          {% if region.global == 1 %}  
+                            <li role="presentation" id="epsg4326"> <a href="#" role="tab" data-toggle="pill">Global</a></li>
+                          {% endif %}
+                            <!--<li role="presentation" id="epsg3338"> <a href="#" role="tab" data-toggle="pill">Alaska</a></li>-->
+                      {% endfor %}
+                      </ul> 
+                </div>
+                <div class="previewMenuSection last">
+                      <h3>Time</h3>
+                      {% for dataset in entry.datasets %}
+                        {% if loop.first %}  
+                          <div class="form-group map-time-selector" id="{{ dataset.id }}-map-time">
+                              <div class="btn btn-sm btn-primary time-prev-btn"><i class="fa fa-angle-left"></i></div>
+                              <div class='input-group date'>
+                                  <input type="text" id="{{ dataset.id }}-datetimepicker" class="calendar form-control" />
+                                  <span class="input-group-addon">
+                                      <span class="glyphicon glyphicon-calendar"></span>
+                                  </span>
+                              </div>
+                              <div class="btn btn-sm btn-primary time-next-btn"><i class="fa fa-angle-right"></i></div>
+                              <div class="btn btn-sm btn-primary time-latest-btn"><i class="fa fa-angle-double-right"></i></div>
+                          </div>
+                        {% else %} 
+                          <div class="form-group map-time-selector hidden" id="{{ dataset.id }}-map-time">
+                              <div class="btn btn-sm btn-primary time-prev-btn"><i class="fa fa-angle-left"></i></div>
+                              <div class='input-group date'>
+                                  <input type="text" id="{{ dataset.id }}-datetimepicker" class="calendar form-control" />
+                                  <span class="input-group-addon">
+                                      <span class="glyphicon glyphicon-calendar"></span>
+                                  </span>
+                              </div>
+                              <div class="btn btn-sm btn-primary time-next-btn"><i class="fa fa-angle-right"></i></div>
+                              <div class="btn btn-sm btn-primary time-latest-btn"><i class="fa fa-angle-double-right"></i></div>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                </div>
+              </div>            
+          </div>
+          {% endif %}
+            
+          
+          <div class="row">
+              <div class="mapArea col-md-8">
+
+                {% if entry.firstValidDataset != -1 %}
+                <div class="mapTitleArea">
+                  <div class="mapTitle">&nbsp;</div>,
+                  <div class="mapTimeStamp">&nbsp;</div>                                
+                </div>
+                
+                <div id="plotPanel">  
+                  <div class="mapWrap center-block">
+                    <div id="map" class="datasetMap"></div>
+                    <div class="loader-wrap hidden"><div class="loader-text"></div><div class="loader"></div></div>
+                    <div id="mapAlert"></div>
+                  </div><!-- end mapwrap-->    
+                  <div class="mapLegendArea">
+                      <div class="mapLegends"></div>      
+                      <!--<div class="mapLegendSettings"><a href="#"><span class="glyphicon glyphicon-cog"></span></a></div>-->
+                  </div>  
+                  <div class="download-btn-wrap">
+                    <div class="btn btn-sm btn-primary goToDownloadBtn"><i class="fa fa-download"></i> Download</div>
+                  </div>
+                </div>
+
+                {% else %}  
+                  <div class="inactiveDatasetMessage alert alert-warning ">Sorry, previews of this dataset are not available. This can occur when the data provider's remote server is inaccessible.</div>
+                {% endif %}
+
+              </div>
+
+              <div class="col-md-4 previewSidebarSecond ">
+
+              {% if entry.pwSummary|length > 0 %}
+
+                   <div class="entrySummary">
+                     <p>{{ entry.pwSummary[0] }}</p>
+                   </div>
+                  
+              {% endif %}
+
+              
+              {% for dataset in entry.datasets %}
+              
+                  {% if loop.index == (entry.firstValidDataset +1) %}
+                  
+                  <div class="sidebarSection dataset-details" id="{{ dataset.id }}-dataset-details">
+                  {% else %}
+                    <div class="sidebarSection dataset-details hidden" id="{{ dataset.id }}-dataset-details">
+                  {% endif %} 
+                    
+                    <div class="">
+                      <h2>{{dataset.subname}} {{entry.entryName}}</h2>
+                      {% if entry.firstValidDataset != -1 %}
+                      <h3>Date Range</h3>
+                      <div class="sidebar-detail-value">{{dataset.time.start}} - {{dataset.time.end }}</div>
+                      {% endif %}
+                      <h3>Source</h3>
+                      <div class="sidebar-detail-value">{{entry.providerCredit}}</div>
+                      <h3>Dataset Id</h3>
+                      <div class="sidebar-detail-value">{{dataset.id}}</div>
+                      <h3>Description</h3>
+                      <div class="sidebar-detail-value">{{dataset.summary}}</div>
+                      <!--
+                      <li class="list-group-item"><div class="listkey">Update Frequency</div><div class="listval">{{ dataset.updateInt }}</div></li>-->
+                      {% if dataset.proj_crs_code is defined %}
+                        {% if dataset.proj_crs_code == "EPSG:4326" %}
+                            <h3>Spatial Resolution (at 70&deg;)</h3>
+                            {% if dataset.ycoord.resolution_val == dataset.xcoord.resolution_val %}
+                              <div class="sidebar-detail-value">{{dataset.ycoord.resolution_str }}</div>
+                            {% else %}
+                              <div class="sidebar-detail-value">Latitude: {{ dataset.ycoord.resolution_str }}, Longitude: {{ dataset.xcoord.resolution_str }} </div>
+                            {% endif %}
+                        {% else %}
+                            <h3>Spatial Resolution</h3>
+                            {% if dataset.ycoord.resolution_val == dataset.xcoord.resolution_val %}
+                              <div class="sidebar-detail-value">{{ dataset.ycoord.resolution_val }} {{dataset.ycoord.resolution_units }}</div>
+                            {% else %}
+                              <div class="sidebar-detail-value">{{dataset.ycoord.name}}: {{ dataset.ycoord.resolution_val }} {{dataset.ycoord.resolution_units }}, {{dataset.xcoord.name}}: {{dataset.xcoord.resolution_val}} {{ dataset.xcoord.resolution_units }} </div>
+                            {% endif %}
+                        {% endif %}
+                      
+                      {% endif %}
+                      {% if dataset.parameters|length > 0 %}
+                        <h3>Parameters</h3>
+                        <div class="sidebar-detail-value">
+                          <ul>
+                          {% for parameter in dataset.parameters %}
+                            <li>{{parameter.name}}</li>
+                          {% endfor %}
+                          </ul>
+                        </div>
+                      {% endif %} 
+                      </div>
+                    </div>
+                    
+                 
+              {% endfor %}
+
+              {% if entry.relatedDatasets|length > 0 %}
+              <div class="sidebarSection dataset-details">
+                <div>
+                <h2>Related Datasets</h2>
+                <ul class="list-group">
+    
+                    {% for relDataset in entry.relatedDatasets %}
+    
+                    <li class="list-group-item"><i class="fa fa-angle-right" aria-hidden="true"></i><a href="{{ relDataset.url }}">{{relDataset.text}}</a></li>
+    
+                    {% endfor %}
+                </ul>
+              </div>
+              </div>
+              {% endif %} 
+
+              <!--<li class="list-group-item">Data of similar time range/extent</li>
+              <li class="list-group-item">Deprecated Version</li>
+              <li class="list-group-item">Same Data different processing</li>-->
+              <div class="sidebarSection dataset-details">
+                <div>
+                <h2>Tutorials</h2>
+                <ul class="list-group">
+                  <li class="list-group-item"><i class="fa fa-angle-right" aria-hidden="true"></i><a href="https://polarwatch.noaa.gov/training/examples/basic-polygon-access-visualization">Using python to access data</a></li>
+                  <!--<li class="list-group-item">Create a Google Earth Animation</li>
+                  <li class="list-group-item">Using the data access API</li>-->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

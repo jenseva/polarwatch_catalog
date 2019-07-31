@@ -1,0 +1,93 @@
+{
+"entryName":"Sea Surface Temperature from GHRSST G1SST",
+"entryId":"sst-GHRSST-G1SST",
+"providerCredit":"NASA JPL",
+"displayName":"Sea Surface Temperature",
+"activeTab":"0",
+"iceDisplay":"1",
+"makeEntryFlag":"0",
+"erddapVarName":"",
+"mapUnits":"&deg;C",
+"parameterTags":["wtemp"],
+"weightFactors":[{
+  "source":"0",
+  "parameter":"5",
+  "quality":"4"
+}],
+"ids":[
+	"jplG1SST"
+],
+"datasets":[
+    {
+    "id":"jplG1SST",
+    "subname":"Daily",
+    "parameters":[
+    	    {   "name":"SST",
+    		    "colorbar":{
+    		    	"colorbarmin":"-2",
+					"colorbarmax":"15",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_thermal"
+    		    }
+    		},{
+				"name":"analysis_error",
+    		    "colorbar":{
+    		    	"colorbarmin":"0",
+					"colorbarmax":"5",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"WhiteBlack"
+    		    }
+    		},{
+    			"name":"mask",
+    		    "colorbar":{
+    		    	"colorbarmin":"0",
+					"colorbarmax":"20",
+					"logscale":"FALSE",
+					"continuity":"d",
+					"sections":"10",
+					"palette":"WhiteRedBlack"
+    		    }
+    		}
+	],
+    "colorbars":[{
+		"colorbarmin":"-2",
+		"colorbarmax":"15",
+		"logscale":"FALSE",
+		"continuity":"",
+		"sections":"",
+		"palette":"KT_thermal"
+		},{
+		"colorbarmin":"0",
+		"colorbarmax":"5",
+		"logscale":"FALSE",
+		"continuity":"",
+		"sections":"",
+		"palette":"WhiteBlack"
+		},{
+		"colorbarmin":"0",
+		"colorbarmax":"20",
+		"logscale":"FALSE",
+		"continuity":"d",
+		"sections":"10",
+		"palette":"WhiteRedBlack"
+		}
+	]
+    }
+],
+"subNames":[
+	"Daily"
+],
+"processLevel":[
+	"level 4"
+],
+"qualityLevel":[
+	"near-real-time"
+],
+"dataType":[
+    "analysis"
+]
+}

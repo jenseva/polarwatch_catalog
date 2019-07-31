@@ -1,0 +1,1 @@
+{"projection": "epsg4326", "dataset_id": "etopo180", "parameter": "altitude", "colorBar": "KT_deep_r,,,-5500,1000,", "cache_date": "1509", "crs": "EPSG:4326", "ycoord_range": ["-90.0", "90.0"], "xcoord_range": ["-180.0", " 180.0"], "sub": "4", "bounds": [" 90.0", "-90.0", "-180.0", " 180.0"], "boundsProjected": [[-180.0, -90.0], [-180.0, 90.0], [180.0, 90.0], [180.0, -90.0]]}

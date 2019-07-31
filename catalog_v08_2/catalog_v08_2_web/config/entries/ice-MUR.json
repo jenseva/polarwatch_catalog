@@ -1,0 +1,57 @@
+{"entryName":"Sea Ice Concentration from OSI SAF",
+"entryId":"ice-MUR",
+"iceDisplay":"0",
+"displayName":"Sea Ice Concentration",
+"providerCredit":"EUMETSAT",
+"activeTab":"0",
+"mapUnits":"Percent Coverage",
+"makeEntryFlag":"1",
+"erddapVarName":"sea_ice_fraction",
+"mask":"",
+"parameterTags":["ice"],
+"weightFactors":[{
+  "source":"0",
+  "parameter":"5",
+  "quality":"0"
+}],
+"regions":[{
+    "arctic":1,
+    "antarctic" :1,
+    "alaska":1,
+    "global":1
+}],
+"ids":[
+	"jplMURSST41"
+],
+"datasets":[{
+    "id":"jplMURSST41",
+    "subname":"Daily",
+    "parameters":[{
+          "name":"sea_ice_fraction",
+          "colorbar":{
+              "colorbarmin":"0",
+              "colorbarmax":"1",
+              "logscale":"FALSE",
+              "continuity":"",
+              "sections":"",
+              "palette":"KT_ice"  
+              }
+    }]
+  }
+],
+"subNames":[
+	"Daily"
+],
+"processLevel":[
+  "Level 4"
+],
+"qualityLevel":[
+  "NRT"
+],
+"dataType":[
+    "Satellite"
+],
+"pwSummary":["This is the EUMETSAT OSI-SAF ice 25-km resolution dataset as packaged in the NASA JPL MUR Sea Surface Temperature product. Daily data is available from June 2002 to present and have global coverage."],
+"wmsLayerNames":[
+	"sea_ice_fraction"
+]}

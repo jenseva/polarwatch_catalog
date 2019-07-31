@@ -1,0 +1,103 @@
+{
+"activeTab":"1",
+"displayName":"Salinity",
+"entryId":"salinity-aquarius",
+"entryName":"Salinity from Aquarius",
+"erddapVarName":"",
+"iceDisplay":"1",
+"makeEntryFlag":"",
+"mapUnits":"PSS",
+"parameterTags":["sal"],
+"providerCredit":"NASA GSFC OBPG",
+"pwSummary":["This is 75km resolution science-quality sea surface salinity data from Aquarius processed by NASA. Daily, weekly, monthly and quarterly versions are available from 2011 to present and have global coverage."],
+"regions":[{
+    "arctic":1,
+    "antarctic":1,
+    "alaska":1,
+    "global":1
+}],
+"weightFactors":[{
+  "source":"0",
+  "parameter":"3",
+  "quality":"3"
+}],
+"ids":[
+  "jplAquariusSSSDailyV5",
+  "jplAquariusSSS7DayV5", 
+  "jplAquariusSSSMonthlyV5", 
+  "jplAquariusSSS3MonthV5"
+ ],
+"datasets":[{
+  "id":"jplAquariusSSSDailyV5",
+  "subname":"Daily",
+  "parameters":[{
+            "name":"sss",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"40",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+                }
+              }
+            ],
+    "processLevel":"Level 3",
+    "qualityLevel":"NRT",
+    "dataType": "Satellite"
+},{
+  "id":"jplAquariusSSS7DayV5",
+  "subname":"Weekly",
+  "parameters":[{
+            "name":"sss",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"40",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+                }
+              }
+            ],
+    "processLevel":"Level 3",
+    "qualityLevel":"NRT",
+    "dataType": "Satellite"
+},{
+  "id":"jplAquariusSSSMonthlyV5",
+  "subname":"Monthly",
+  "parameters":[{
+            "name":"sss",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"40",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+                }
+              }
+            ],
+    "processLevel":"Level 3",
+    "qualityLevel":"NRT",
+    "dataType": "Satellite"
+},{
+  "id":"jplAquariusSSS3MonthV5",
+  "subname":"Quarterly",
+  "parameters":[{
+            "name":"sss",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"40",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+                }
+              }
+            ],
+  "processLevel": "Level 3",
+  "qualityLevel": "NRT",
+  "dataType": "Satellite"
+}]
+}

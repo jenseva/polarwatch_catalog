@@ -1,0 +1,101 @@
+{
+"entryName":"Water Leaving Radiance nLw671 NOAA VIIRS Science Quality",
+"entryId":"nLw671-VIIRS-NOAA-SQ",
+"providerCredit":"NOAA NESDIS STAR",
+"displayName":"nLw671",
+"activeTab":"0",
+"iceDisplay":"1",
+"layerName":"",
+"makeEntryFlag":"",
+"erddapVarName":"",
+"mapUnits":"&micro;g/L",
+"parameterTags":["color"],
+"regions":[{
+    "arctic":1,
+    "antarctic":1,
+    "alaska":1,
+    "global":1
+}],
+"weightFactors":[{
+  "source":"5",
+  "parameter":"0",
+  "quality":"5"
+}],
+"ids":[
+	"nesdisVHNSQnLw671Daily",
+	"nesdisVHNSQnLw671Weekly",
+	"nesdisVHNSQnLw671Monthly"
+],
+"datasets":[
+    {
+    "id":"nesdisVHNSQnLw671Daily",
+    "subname":"Daily",
+    "parameters":[{
+    	"name":"nLw_671",
+    	"colorbar":{
+    		"colorbarmin":"0.004",
+			"colorbarmax":"2",
+			"logscale":"TRUE",
+			"continuity":"",
+			"sections":"",
+			"palette":"KT_thermal"
+    	}
+
+    }]
+    },{
+    "id":"nesdisVHNSQnLw671Weekly",
+    "subname":"Weekly",
+    "parameters":[{
+		"name":"nLw_671",
+    	"colorbar":{
+    		"colorbarmin":"0.004",
+			"colorbarmax":"2",
+			"logscale":"TRUE",
+			"continuity":"",
+			"sections":"",
+			"palette":"KT_thermal"
+    	}
+    }]
+    },{
+    "id":"nesdisVHNSQnLw671Monthly",
+    "subname":"Monthly",
+    "parameters":[{
+    	"name":"nLw_671",
+    	"colorbar":{
+    		"colorbarmin":"0.004",
+			"colorbarmax":"2",
+			"logscale":"TRUE",
+			"continuity":"",
+			"sections":"",
+			"palette":"KT_thermal"
+    	}
+    }]
+ 	}
+],
+"subNames":[
+	"Daily",
+	"Weekly",
+	"Monthly"
+],
+"processLevel":[
+	"level 3",
+	"level 3",
+	"level 3"
+],
+"qualityLevel":[
+	"science quality",
+	"science quality",
+	"science quality"
+],
+"dataType":[
+    "satellite",
+    "satellite",
+    "satellite"
+],
+"pwSummary":["This is a 4km resolution science-quality ocean color dataset from NOAA. Daily, weekly and monthly versions are available and have global coverage."],
+"relatedDatasets":[
+{
+    "url":"https://polarwatch.noaa.gov/erddap/griddap/nesdisVHNchlaDaily.graph",
+    "text":"NOAA VIIRS NRT Chlorophyll"
+}]
+}

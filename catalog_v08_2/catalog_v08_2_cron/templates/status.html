@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Catalog Status</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../css/favicon.png">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+<link rel="stylesheet" href="../css/paper.css" type="text/css" >
+<link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+<link href="../css/catalog_{{version_number}}.css" rel="stylesheet">
+<link href="../css/dataset_{{version_number}}.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="../js/common_{{version_number}}.js"></script>
+<script type="text/javascript" src="../js/status_{{version_number}}.js"></script>
+<script type="text/javascript" src="../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+
+<style>
+body { 
+  font-family:"Roboto";
+  background-color: #fff;
+}
+.col1 {
+  width: 300px;
+}
+.col2 {
+  width: 300px;
+}
+.col3 {
+  width: 300px;
+}
+h1 {
+  float: none;
+}
+h3 {
+  font-size:18px;
+}
+table {
+  font-size: 1.1rem;
+}
+th {
+  font-weight: 500; 
+  color: #555;
+}
+</style>
+</head>
+
+<body>
+
+<div class="statusPage container-fluid">
+  
+    <div class="row">
+       
+        <div class="col-sm-12" >
+          
+            <h1 class="pull-left">Catalog Status</h1>
+            <h2 class="pull-right">Version: {{version_number}}</h2>
+            <p style="clear:both">Last Update: <span id="lastCatalogUpdateTime"></span></p>
+            <p><span id="validEntryCount"></span> of {{cataloginfo|length}} entries are valid<p>
+            <p><span id="validDatasetCount"></span> of <span id="totalDatasetCount"></span> datasets are valid</p>
+
+            {% for entryref, entry in cataloginfo.items() %}
+              {% if entry.entryName %}   
+                <h3>{{entry.entryName}}</h3>
+                
+                {% if entry.firstValidDataset == -1 %}
+                  <p class="invalidEntryAlert">All datasets for this entry are inaccessible (as of {{ entry.pageWritten }}), so this entry does not appear in the catalog at the moment.</p>
+                {% endif%}
+                
+                <table class="table table-condensed">
+                  
+                  <thead>
+                    <tr>
+                      <th class="col1">Dataset</th>
+                      <th class="col2">In ERDDAP</th>
+                      <th class="col3">Latest Avail. Data</th>
+                    </tr>
+                  </thead>
+                    
+                  <tbody>
+                  {% for dataset in entry.datasets %}
+                      <tr>
+                        <td><a href="../{{entry.entryId}}/preview" target="_blank">{{dataset.subname}} ({{dataset.id}})</a></td>
+                        {% if dataset.inERDDAP == 1 %}
+                          <td><a href="https://polarwatch.noaa.gov/erddap/griddap/{{dataset.id}}.html" target="_blank">YES</a></td>  
+                          {% if dataset.time is defined %}
+                          <td>{{dataset.time.end }}</td>
+                          {% else %}
+                            try to use dates from all datasets</div></li>
+                          {% endif %}
+                        {% else %}
+                          <td><a href="https://polarwatch.noaa.gov/erddap/griddap/{{dataset.id}}.html" target="_blank">NO ({{dataset.inERDDAPReason}})</a></td>
+                          <td></td>
+                        {% endif %}                          
+                      </tr>
+                  {% endfor %}
+                  </tbody>
+                  
+                </table>
+              {% endif %}
+            {% endfor %}
+    </div>
+  </div>
+</div>
+</body>
+</html>

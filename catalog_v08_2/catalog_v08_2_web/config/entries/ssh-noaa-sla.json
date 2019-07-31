@@ -1,0 +1,63 @@
+{
+"entryName":"Sea Surface Height from NOAA Experimental",
+"entryId":"ssh-noaa-sla",
+"displayName":"Sea Surface Height Deviation",
+"activeTab":"0",
+"providerCredit":"NOAA NESDIS STAR",
+"iceDisplay":"1",
+"makeEntryFlag":"",
+"erddapVarName":"",
+"mapUnits":"meters",
+"parameterTags":["ssh"],
+"regions":[{
+    "arctic":1,
+    "antarctic":1,
+    "alaska":1,
+    "global":1
+}],
+"weightFactors":[{
+  "source":"4",
+  "parameter":"5",
+  "quality":"1"
+}],
+"ids":[
+	"nesdisSSH1day"
+ ],
+"datasets":[{
+      "id":"nesdisSSH1day",
+      "subname":"Daily",
+      "bulkDownloadUrl":"https://coastwatch.pfeg.noaa.gov/erddap/files/nesdisSSH1day/",
+      "bulkDownloadText":"Download in Bulk",
+      "parameters":
+      [{
+        "name":"sla",
+        "colorbar":{
+          "colorbarmin":"-2",
+          "colorbarmax":"2",
+          "logscale":"false",
+          "continuity":"",
+          "sections":"",
+          "palette":"KT_balance"
+        }
+      }]
+    }
+],
+"subNames":[
+	"Daily"
+],
+"processLevel":[
+  "level 3"
+],
+"qualityLevel":[
+  "experimental"
+],
+"dataType":[
+    "satellite"
+],
+"pwSummary":["This is an experimental sea surface height product from NOAA NESDIS based on RADS altimetry data. Data in the polar regions have not been validated. Daily data are available at 0.25 &deg; resolution with global coverage."],
+"relatedDatasets":[
+{
+  "url":"https://polarwatch.noaa.gov/catalog_v04/ssh-aviso/",
+  "text":"AVISO Sea Surface Height"
+}]
+}

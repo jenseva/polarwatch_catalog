@@ -1,0 +1,181 @@
+{
+"entryName":"Sea Surface Temperature from MUR",
+"entryId":"sst-MUR",
+"providerCredit":"NASA JPL",
+"displayName":"Sea Surface Temperature",
+"activeTab":"0",
+"iceDisplay":"1",
+"makeEntryFlag":"0",
+"erddapVarName":"",
+"mapUnits":"&deg;C",
+"parameterTags":["wtemp"],
+"pwSummary":["This is a 500-km resolution sea surface temperature analysis product from NASA JPL. Daily and monthly versions are available from 2002 to present with global coverage."],
+"weightFactors":[{
+  "source":"0",
+  "parameter":"5",
+  "quality":"4"
+}],
+"regions":[{
+    "arctic":1,
+    "antarctic":1,
+    "alaska":1,
+    "global":1
+}],
+"ids":[
+	"jplMURSST41",
+	"jplMURSST41mday"
+],
+"datasets":[
+    {
+    "id":"jplMURSST41",
+    "subname":"Daily",
+    "parameters":[
+    	    {   "name":"analysed_sst",
+    		    "colorbar":{
+    		    	"colorbarmin":"-2",
+					"colorbarmax":"15",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_thermal"
+    		    }
+    		},{
+				"name":"analysis_error",
+    		    "colorbar":{
+    		    	"colorbarmin":"0",
+					"colorbarmax":"5",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_gray"
+    		    }
+    		},{
+    			"name":"mask",
+    		    "colorbar":{
+    		    	"colorbarmin":"0",
+					"colorbarmax":"20",
+					"logscale":"FALSE",
+					"continuity":"d",
+					"sections":"10",
+					"palette":"coolwarm"
+    		    }
+    		},{
+    			"name":"sea_ice_fraction",
+    		    "colorbar":{
+    		    	"colorbarmin":"0",
+					"colorbarmax":"1",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_ice"	
+    		    }
+			}
+	],
+    "colorbars":[{
+		"colorbarmin":"-2",
+		"colorbarmax":"15",
+		"logscale":"FALSE",
+		"continuity":"",
+		"sections":"",
+		"palette":"KT_thermal"
+		},{
+		"colorbarmin":"0",
+		"colorbarmax":"5",
+		"logscale":"FALSE",
+		"continuity":"",
+		"sections":"",
+		"palette":"WhiteBlack"
+		},{
+		"colorbarmin":"0",
+		"colorbarmax":"20",
+		"logscale":"FALSE",
+		"continuity":"d",
+		"sections":"10",
+		"palette":"WhiteRedBlack"
+		},{
+		"colorbarmin":"0",
+		"colorbarmax":"1",
+		"logscale":"FALSE",
+		"continuity":"",
+		"sections":"",
+		"palette":"KT_ice"	
+		}
+	]
+    },{
+    "id":"jplMURSST41mday",
+    "subname":"Monthly",
+    "parameters":[
+    	  {   
+    	    "name":"sst",
+    	    "colorbar": {
+				"colorbarmin":"-2",
+				"colorbarmax":"15",
+				"logscale":"FALSE",
+				"continuity":"",
+				"sections":"",
+				"palette":"KT_thermal"
+    	  	}
+    	  },{
+    	  	"name":"nobs",
+			"colorbar": {
+				"colorbarmin":"0",
+				"colorbarmax":"5",
+				"logscale":"FALSE",
+				"continuity":"",
+				"sections":"",
+				"palette":"WhiteBlack"
+			}
+    	  },{
+    	  	"name":"mask",
+			"colorbar": {
+				"colorbarmin":"0",
+				"colorbarmax":"20",
+				"logscale":"FALSE",
+				"continuity":"",
+				"sections":"",
+				"palette":"WhiteRedBlack"
+    	    }
+    	  }
+	],
+    "colorbars":[
+		{
+		"colorbarmin":"-2",
+		"colorbarmax":"15",
+		"logscale":"FALSE",
+		"continuity":"",
+		"sections":"",
+		"palette":"KT_thermal"
+		},{
+		"colorbarmin":"0",
+		"colorbarmax":"5",
+		"logscale":"FALSE",
+		"continuity":"",
+		"sections":"",
+		"palette":"WhiteBlack"
+		},{
+		"colorbarmin":"0",
+		"colorbarmax":"20",
+		"logscale":"FALSE",
+		"continuity":"",
+		"sections":"",
+		"palette":"WhiteRedBlack"
+		}]
+	}
+],
+"subNames":[
+	"Daily",
+	"Monthly"
+],
+"processLevel":[
+	"level 4",
+	"level 4"
+],
+"qualityLevel":[
+	"near-real-time",
+	"near-real-time"
+],
+"dataType":[
+    "analysis",
+    "analysis"
+]
+}

@@ -1,0 +1,138 @@
+{
+"entryName":"Sea Ice Concentration from NSIDC NRT CDR, Arctic",
+"entryId":"ice-nrt-nh-nsidc-cdr",
+"providerCredit":"NOAA/NSIDC",
+"displayName":"Sea Ice Concentration",
+"activeTab":"0",
+"iceDisplay":"0",
+"makeEntryFlag":"0",
+"erddapVarName":"",
+"mapUnits":"&deg;C",
+"parameterTags":["ice"],
+"weightFactors":[{
+  "source":"3",
+  "parameter":"5",
+  "quality":"4"
+}],
+"regions":[{
+    "arctic":1,
+    "antarctic":0,
+    "alaska":1
+}],
+"ids":[
+	"nsidcCDRiceNRTnh1day",
+	"nsidcCDRiceNRTnhmday"
+],
+"datasets":[
+    {
+    "id":"nsidcCDRiceNRTnh1day",
+    "subname":"Daily",
+    "xdim":"xgrid",
+    "ydim":"ygrid",
+    "parameters":[
+    	    {   "name":"seaice_conc_cdr",
+    		    "colorbar":{
+    		    	"colorbarmin":"0",
+					"colorbarmax":"1",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_ice"	
+    		    	},
+                "maskedValues":"0"
+			},{   
+                "name":"stdev_of_seaice_conc_cdr",
+                "colorbar":{
+                    "colorbarmin":"0",
+                    "colorbarmax":"50",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_gray"  
+                    }
+            },{   
+                "name":"melt_onset_day_seaice_conc_cdr",
+                "colorbar":{
+                    "colorbarmin":"60",
+                    "colorbarmax":"244",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_gray"  
+                    }
+            },{   
+                "name":"qa_of_seaice_conc_cdr",
+                "colorbar":{
+                    "colorbarmin":"-128",
+                    "colorbarmax":"32",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_gray"  
+                    }
+            }
+		]
+    },{
+    "id":"nsidcCDRiceNRTnhmday",
+    "subname":"Monthly",
+    "xdim":"xgrid",
+    "ydim":"ygrid",
+    "parameters":[
+    	    {   "name":"seaice_conc_monthly_cdr",
+    		    "colorbar":{
+    		    	"colorbarmin":"0",
+					"colorbarmax":"1",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_ice"	
+    		    	},
+                "maskedValues":"0"
+			},{   
+                "name":"stdev_of_seaice_conc_monthly_cdr",
+                "colorbar":{
+                    "colorbarmin":"0",
+                    "colorbarmax":"50",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_gray"  
+                    }
+            },{   
+                "name":"melt_onset_day_seaice_conc_monthly_cdr",
+                "colorbar":{
+                    "colorbarmin":"60",
+                    "colorbarmax":"244",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_gray"  
+                    }
+            },{   
+                "name":"qa_of_seaice_conc_monthly_cdr",
+                "colorbar":{
+                    "colorbarmin":"-128",
+                    "colorbarmax":"32",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_gray"  
+                    }
+            }
+		]
+    }
+],
+"subNames":[
+	"Monthly"
+],
+"processLevel":[
+	"level 4"
+],
+"qualityLevel":[
+	"science-quality"
+],
+"dataType":[
+    "analysis"
+],
+"pwSummary":["This is 25km sea ice concentration data for the Arctic from the Near Real-Time NOAA/NSIDC Climate Data Record. Daily and monthly versions are available with data from the past two years. This is the NRT version (G10016) of the final NOAA/NSIDC Climate Data Record of Passive Microwave Sea Ice Concentration (G02202). The NRT CDR fills the temporal gap between annual updates of the final CDR and provides the most recent data."]
+}

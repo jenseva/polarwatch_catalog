@@ -1,0 +1,114 @@
+{
+"entryName":"Chlorophyll from Aqua MODIS",
+"entryId":"chl-aqua",
+"displayName":"Chlorophyll",
+"providerCredit":"NASA GSFC OBPG",
+"activeTab":"1",
+"regions":[{
+    "arctic":1,
+    "antarctic" :1,
+    "alaska":1,
+    "global":1
+}],
+"ids":[
+	"erdMH1chla1day", 
+	"erdMH1chla8day", 
+	"erdMH1chlamday"
+],
+"datasets":[
+    {
+        "id":"erdMH1chla1day",
+        "subname":"Daily",
+        "bulkDownloadUrl":"http://oceanwatch.pfeg.noaa.gov/thredds/Satellite/MH1/chla/catalog.html?dataset=satellite/MH1/chla/1day",
+        "bulkDownloadText":"Download in Bulk",
+        "parameters":[{
+            "name":"chlorophyll",
+            "colorbar":{
+                "colorbarmin":"0.001",
+                "colorbarmax":"10",
+                "logscale":"TRUE",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_algae"
+            }
+        }]
+    }, {
+      "id":"erdMH1chla8day",
+      "subname":"Weekly",
+      "bulkDownloadUrl":"http://oceanwatch.pfeg.noaa.gov/thredds/Satellite/MH1/chla/catalog.html?dataset=satellite/MH1/chla/8day",
+      "bulkDownloadText":"Download in Bulk",
+      "parameters":[{
+            "name":"chlorophyll",
+            "colorbar":{
+                "colorbarmin":"0.001",
+                "colorbarmax":"10",
+                "logscale":"TRUE",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_algae"
+            }
+        }]
+    }, {
+        "id":"erdMH1chlamday",
+        "subname":"Monthly",
+        "bulkDownloadUrl":"http://oceanwatch.pfeg.noaa.gov/thredds/Satellite/MH1/chla/catalog.html?dataset=satellite/MH1/chla/mday",
+        "bulkDownloadText":"Download in Bulk",
+        "parameters":[{
+            "name":"chlorophyll",
+            "colorbar":{
+                "colorbarmin":"0.001",
+                "colorbarmax":"10",
+                "logscale":"TRUE",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_algae"
+            }
+        }]
+    }
+],
+"subNames": [
+	"Daily", 
+	"Weekly", 
+	"Monthly"
+],
+"processLevel":[
+    "level 3",
+    "level 3",
+    "level 3"
+],
+"qualityLevel":[
+    "science quality",
+    "science quality",
+    "science quality"
+],
+"dataType":[
+    "satellite",
+    "satellite",
+    "satellite"
+],
+"mapUnits":"&micro;g/L",
+"iceDisplay":"1",
+"wmsLayerNames":[
+	"chlor_a", 
+	"chlor_a", 
+	"chlor_a"
+],
+"makeEntryFlag":"0",
+"erddapVarName":"",
+"mask":"1",
+"parameterTags":["color"],
+"weightFactors":[{
+  "source":"0",
+  "parameter":"3",
+  "quality":"5"
+}],
+"pwSummary":["This is 4km resolution science-quality chlorophyll-a concentration data from NASA's Aqua Spacecraft. Daily, weekly and monthly versions are available from Jan 2003 to Present and have global coverage."],
+"relatedDatasets":[
+{
+  "url":"https://polarwatch.noaa.gov/erddap/griddap/nesdisVHNSQchlaDaily.graph",
+  "text":"NOAA VIIRS Science Quality Chlorophyll"
+},{
+    "url":"https://polarwatch.noaa.gov/erddap/griddap/nesdisVHNchlaDaily.graph",
+    "text":"NOAA VIIRS NRT Chlorophyll"
+}]
+}

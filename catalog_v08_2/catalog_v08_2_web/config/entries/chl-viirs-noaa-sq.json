@@ -1,0 +1,99 @@
+{
+"entryName":"Chlorophyll from NOAA VIIRS Science Quality",
+"entryId":"chl-VIIRS-NOAA-SQ",
+"providerCredit":"NOAA NESDIS STAR",
+"displayName":"Chlorophyll",
+"activeTab":"0",
+"iceDisplay":"1",
+"layerName":"",
+"makeEntryFlag":"",
+"erddapVarName":"",
+"mapUnits":"&micro;g/L",
+"parameterTags":["color"],
+"regions":[{
+    "arctic":1,
+    "antarctic" :1,
+    "alaska":1,
+    "global":1
+}],
+"weightFactors":[{
+  "source":"5",
+  "parameter":"3",
+  "quality":"5"
+}],
+"ids":[
+	"nesdisVHNSQchlaDaily",
+	"nesdisVHNSQchlaWeekly",
+	"nesdisVHNSQchlaMonthly"
+],
+"datasets":[{
+    "id":"nesdisVHNSQchlaDaily",
+    "subname":"Daily",
+    "parameters":[{
+            "name":"chlor_a",
+            "colorbar":{
+                "colorbarmin":"0.001",
+                "colorbarmax":"10",
+                "logscale":"TRUE",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_algae"
+            }
+        }]
+    },{
+    "id":"nesdisVHNSQchlaWeekly",
+    "subname":"Weekly",
+    "parameters":[{
+            "name":"chlor_a",
+            "colorbar":{
+                "colorbarmin":"0.001",
+                "colorbarmax":"10",
+                "logscale":"TRUE",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_algae"
+            }
+        }]
+    },{
+    "id":"nesdisVHNSQchlaMonthly",
+    "subname":"Monthly",
+    "parameters":[{
+            "name":"chlor_a",
+            "colorbar":{
+                "colorbarmin":"0.001",
+                "colorbarmax":"10",
+                "logscale":"TRUE",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_algae"
+            }
+        }]
+	}
+],
+"subNames":[
+	"Daily",
+	"Weekly",
+	"Monthly"
+],
+"processLevel":[
+	"level 3",
+	"level 3",
+	"level 3"
+],
+"qualityLevel":[
+	"science quality",
+	"science quality",
+	"science quality"
+],
+"dataType":[
+    "satellite",
+    "satellite",
+    "satellite"
+],
+"pwSummary":["This is 4km resolution science-quality chlorophyll-a concentration data from the VIIRS sensor, this data is processed by NOAA. Daily, weekly and monthly versions are available from Jan 2012 to present and have global coverage."],
+"relatedDatasets":[
+{
+    "url":"https://polarwatch.noaa.gov/erddap/griddap/nesdisVHNchlaDaily.graph",
+    "text":"NOAA VIIRS NRT Chlorophyll"
+}]
+}

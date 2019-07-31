@@ -1,0 +1,196 @@
+{
+"entryName":"Sea Ice Concentration from NSIDC CDR, Antarctic",
+"entryId":"ice-sq-sh-nsidc-cdr",
+"providerCredit":"NOAA/NSIDC",
+"displayName":"Sea Ice Concentration",
+"activeTab":"0",
+"iceDisplay":"0",
+"makeEntryFlag":"0",
+"erddapVarName":"",
+"mapUnits":"&deg;C",
+"parameterTags":["ice"],
+"weightFactors":[{
+  "source":"3",
+  "parameter":"5",
+  "quality":"4"
+}],
+"regions":[{
+    "arctic":0,
+    "antarctic":1,
+    "alaska":0
+}],
+"ids":[
+	"nsidcCDRiceSQsh1day",
+	"nsidcCDRiceSQshmday"
+],
+"datasets":[
+    {
+    "id":"nsidcCDRiceSQsh1day",
+    "subname":"Daily",
+    "xdim":"xgrid",
+    "ydim":"ygrid",
+    "parameters":[
+    	    {   "name":"seaice_conc_cdr",
+    		    "colorbar":{
+    		    	"colorbarmin":"0",
+					"colorbarmax":"1",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_ice"	
+    		    	}
+			},{   
+                "name":"stdev_of_seaice_conc_cdr",
+                "colorbar":{
+                    "colorbarmin":"0",
+                    "colorbarmax":"50",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_gray"  
+                    }
+            },{   
+                "name":"melt_onset_day_seaice_conc_cdr",
+                "colorbar":{
+                    "colorbarmin":"60",
+                    "colorbarmax":"244",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_gray"  
+                    }
+            },{   
+                "name":"qa_of_seaice_conc_cdr",
+                "colorbar":{
+                    "colorbarmin":"-128",
+                    "colorbarmax":"32",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_gray"  
+                    }
+            },{   
+                "name":"goddard_merged_seaice_conc",
+                "colorbar":{
+                    "colorbarmin":"0",
+                    "colorbarmax":"1",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_ice"  
+                    }
+            },{   
+                "name":"goddard_nt_seaice_conc",
+                "colorbar":{
+                    "colorbarmin":"0",
+                    "colorbarmax":"1",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_ice"  
+                    }
+            },{   
+                "name":"goddard_bt_seaice_conc",
+                "colorbar":{
+                    "colorbarmin":"0",
+                    "colorbarmax":"1",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_ice"  
+                    }
+            }
+		]
+    },{
+    "id":"nsidcCDRiceSQshmday",
+    "subname":"Monthly",
+    "xdim":"xgrid",
+    "ydim":"ygrid",
+    "parameters":[
+    	    {   "name":"seaice_conc_monthly_cdr",
+    		    "colorbar":{
+    		    	"colorbarmin":"0",
+					"colorbarmax":"1",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_ice"	
+    		    	}
+			},{   
+                "name":"stdev_of_seaice_conc_monthly_cdr",
+                "colorbar":{
+                    "colorbarmin":"0",
+                    "colorbarmax":"50",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_gray"  
+                    }
+            },{   
+                "name":"melt_onset_day_seaice_conc_monthly_cdr",
+                "colorbar":{
+                    "colorbarmin":"60",
+                    "colorbarmax":"244",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_gray"  
+                    }
+            },{   
+                "name":"qa_of_seaice_conc_monthly_cdr",
+                "colorbar":{
+                    "colorbarmin":"-128",
+                    "colorbarmax":"32",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_gray"  
+                    }
+            },{   
+                "name":"goddard_merged_seaice_conc_monthly",
+                "colorbar":{
+                    "colorbarmin":"0",
+                    "colorbarmax":"1",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_ice"  
+                    }
+            },{   
+                "name":"goddard_nt_seaice_conc_monthly",
+                "colorbar":{
+                    "colorbarmin":"0",
+                    "colorbarmax":"1",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_ice"  
+                    }
+            },{   
+                "name":"goddard_bt_seaice_conc_monthly",
+                "colorbar":{
+                    "colorbarmin":"0",
+                    "colorbarmax":"1",
+                    "logscale":"FALSE",
+                    "continuity":"",
+                    "sections":"",
+                    "palette":"KT_ice"  
+                    }
+            }
+		]
+    }
+],
+"subNames":[
+	"Monthly"
+],
+"processLevel":[
+	"level 4"
+],
+"qualityLevel":[
+	"science-quality"
+],
+"dataType":[
+    "analysis"
+],
+"pwSummary":["This is 25km science quality sea ice concentration data for the Antarctic from the NOAA NSIDC Climate Data Record, Version 3 (G02202). This data set provides a Climate Data Record (CDR) of sea ice concentration from passive microwave data. Daily and monthly versions are available from 1978 to the most recent annual processing."]
+}

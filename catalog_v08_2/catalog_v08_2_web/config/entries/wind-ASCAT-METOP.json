@@ -1,0 +1,152 @@
+{
+"entryName":"Winds from ASCAT METOP",
+"entryId":"wind-ASCAT-METOP",
+"providerCredit":"NOAA SWFSC ERD",
+"displayName":"Winds",
+"activeTab":"0",
+"iceDisplay":"1",
+"makeEntryFlag":"0",
+"erddapVarName":"",
+"mapUnits":"&deg;C",
+"parameterTags":["wind"],
+"pwSummary":["This is 20-km wind measurements from the ASCAT instrument onboard EUMETSAT's Metop-B satellite. Daily, 3-day, 8-day and monthly versions are available from 2013 to present and has global coverage."],
+"regions":[{
+    "arctic":1,
+    "antarctic":1,
+    "alaska":1,
+    "global":1
+}],
+"weightFactors":[{
+  "source":"3",
+  "parameter":"4",
+  "quality":"3"
+}],
+"ids":[
+	"erdQBwind1day_LonPM180",
+	"erdQBwind3day_LonPM180",
+	"erdQBwind8day_LonPM180",
+	"erdQBwindmday_LonPM180"
+],
+"datasets":[
+    {
+    "id":"erdQBwind1day_LonPM180",
+    "subname":"Daily",
+    "parameters":[
+    	    {   "name":"x_wind",
+    		    "colorbar":{
+    		    	"colorbarmin":"-15",
+					"colorbarmax":"15",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_balance"
+    		    }
+    		},{
+				"name":"y_wind",
+    		    "colorbar":{
+    		    	"colorbarmin":"-15",
+					"colorbarmax":"15",
+					"logscale":"FALSE",
+					"continuity":"",
+					"sections":"",
+					"palette":"KT_balance"
+    		    }
+			}
+	]
+    },{
+    "id":"erdQBwind3day_LonPM180",
+    "subname":"3-day",
+    "parameters":[
+    	  {   
+    	    "name":"x_wind",
+    	    "colorbar": {
+				"colorbarmin":"-15",
+				"colorbarmax":"15",
+				"logscale":"FALSE",
+				"continuity":"",
+				"sections":"",
+				"palette":"KT_balance"
+    	  	}
+    	  },{
+    	  	"name":"y_wind",
+			"colorbar": {
+				"colorbarmin":"-15",
+				"colorbarmax":"15",
+				"logscale":"FALSE",
+				"continuity":"",
+				"sections":"",
+				"palette":"KT_balance"
+			}
+    	  }
+	]
+	},{
+    "id":"erdQBwind8day_LonPM180",
+    "subname":"8-day",
+    "parameters":[
+    	  {   
+    	    "name":"x_wind",
+    	    "colorbar": {
+				"colorbarmin":"-15",
+				"colorbarmax":"15",
+				"logscale":"FALSE",
+				"continuity":"",
+				"sections":"",
+				"palette":"KT_balance"
+    	  	}
+    	  },{
+    	  	"name":"y_wind",
+			"colorbar": {
+				"colorbarmin":"-15",
+				"colorbarmax":"15",
+				"logscale":"FALSE",
+				"continuity":"",
+				"sections":"",
+				"palette":"KT_balance"
+			}
+    	  }
+	]
+	},{
+    "id":"erdQBwindmday_LonPM180",
+    "subname":"Monthly",
+    "parameters":[
+    	  {   
+    	    "name":"x_wind",
+    	    "colorbar": {
+				"colorbarmin":"-15",
+				"colorbarmax":"15",
+				"logscale":"FALSE",
+				"continuity":"",
+				"sections":"",
+				"palette":"KT_balance"
+    	  	}
+    	  },{
+    	  	"name":"y_wind",
+			"colorbar": {
+				"colorbarmin":"-15",
+				"colorbarmax":"15",
+				"logscale":"FALSE",
+				"continuity":"",
+				"sections":"",
+				"palette":"KT_balance"
+			}
+    	  }
+	]
+	}
+],
+"subNames":[
+	"Daily",
+	"Monthly"
+],
+"processLevel":[
+	"level 4",
+	"level 4"
+],
+"qualityLevel":[
+	"near-real-time",
+	"near-real-time"
+],
+"dataType":[
+    "analysis",
+    "analysis"
+]
+}

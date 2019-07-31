@@ -1,0 +1,113 @@
+{
+"entryName":"Salinity from SMOS",
+"entryId":"salinity-smos",
+"displayName":"Salinity",
+"activeTab":"1",
+"providerCredit":"ESA, NCEI",
+"iceDisplay":"1",
+"makeEntryFlag":"",
+"erddapVarName":"",
+"mapUnits":"PSS",
+"parameterTags":["sal"],
+"regions":[{
+    "arctic":1,
+    "antarctic":1,
+    "alaska":1,
+    "global":1
+}],
+"weightFactors":[{
+  "source":"4",
+  "parameter":"3",
+  "quality":"3"
+}],
+"ids":[
+	"nceiSMOS30sss3day",
+ 	"nceiSMOS30sssMonthly"
+ ],
+"datasets":[{
+    "id":"nceiSMOS30sss3day",
+    "subname":"3-Day",
+    "parameters":[{
+            "name":"sss1",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"40",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+                }
+            },{
+            "name":"sss1_obs",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"150",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+                }
+            },{
+            "name":"sss1_qi",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"250",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+            }
+        }]
+    },{
+    "id":"nceiSMOS30sssMonthly",
+    "subname":"Monthly",
+    "parameters":[{
+            "name":"sss1",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"40",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+                }
+            },{
+            "name":"sss1_obs",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"150",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+                }
+            },{
+            "name":"sss1_qi",
+            "colorbar":{
+                "colorbarmin":"0",
+                "colorbarmax":"250",
+                "logscale":"false",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_haline"
+            }
+        }]
+  }
+],
+"subNames":[
+	"3-Day", 
+	"Monthly"
+],
+"processLevel":[
+  "level 4",
+  "level 4"
+],
+"qualityLevel":[
+  "near-real-time",
+  "near-real-time"
+],
+"dataType":[
+    "satellite analysis",
+    "satellite analysis"
+]
+}

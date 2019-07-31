@@ -1,0 +1,80 @@
+{
+"entryName":"Chlorophyll from NOAA VIIRS NRT",
+"entryId":"chl-VIIRS-NOAA",
+"providerCredit":"NOAA NESDIS STAR",
+"displayName":"Chlorophyll",
+"activeTab":"0",
+"iceDisplay":"1",
+"layerName":"",
+"makeEntryFlag":"",
+"erddapVarName":"",
+"mapUnits":"&micro;g/L",
+"parameterTags":["color"],
+"regions":[{
+    "arctic":1,
+    "antarctic" :1,
+    "alaska":1,
+    "global":1
+}],
+"weightFactors":[{
+  "source":"5",
+  "parameter":"3",
+  "quality":"5"
+}],
+"ids":[
+	"nesdisVHNchlaDaily",
+	"nesdisVHNchlaMonthly"
+],
+"datasets":[{
+    "id":"nesdisVHNchlaDaily",
+    "subname":"Daily",
+    "parameters":[{
+            "name":"chlor_a",
+            "colorbar":{
+                "colorbarmin":"0.001",
+                "colorbarmax":"10",
+                "logscale":"TRUE",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_algae"
+            }
+        }]
+    },{
+    "id":"nesdisVHNchlaMonthly",
+    "subname":"Monthly",
+    "parameters":[{
+            "name":"chlor_a",
+            "colorbar":{
+                "colorbarmin":"0.001",
+                "colorbarmax":"10",
+                "logscale":"TRUE",
+                "continuity":"",
+                "sections":"",
+                "palette":"KT_algae"
+            }
+        }]
+	}
+],
+"subNames":[
+	"Daily",
+	"Monthly"
+],
+"processLevel":[
+	"level 3",
+	"level 3"
+],
+"qualityLevel":[
+	"Experimental",
+	"Experimental"
+],
+"dataType":[
+    "satellite",
+    "satellite"
+],
+"pwSummary":["This is 4-km resolution near-real-time chlorophyll-a concentration data from VIIRS processed by NOAA. Daily, weekly and monthly versions are available from Jan 2015 to present and have global coverage."],
+"relatedDatasets":[
+{
+  "url":"https://polarwatch.noaa.gov/erddap/griddap/nesdisVHNSQchlaDaily.graph",
+  "text":"NOAA VIIRS Science Quality Chlorophyll"
+}]
+}

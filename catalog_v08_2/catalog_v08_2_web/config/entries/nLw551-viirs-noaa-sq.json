@@ -1,0 +1,99 @@
+{
+"entryName":"Water Leaving Radiance nLw551 NOAA VIIRS Science Quality",
+"entryId":"nLw551-VIIRS-NOAA-SQ",
+"providerCredit":"NOAA NESDIS STAR",
+"displayName":"nLw551",
+"activeTab":"0",
+"iceDisplay":"1",
+"layerName":"",
+"makeEntryFlag":"",
+"erddapVarName":"",
+"mapUnits":"&micro;g/L",
+"parameterTags":["color"],
+"regions":[{
+    "arctic":1,
+    "antarctic":1,
+    "alaska":1,
+    "global":1
+}],
+"weightFactors":[{
+  "source":"5",
+  "parameter":"0",
+  "quality":"5"
+}],
+"ids":[
+	"nesdisVHNSQnLw551Daily",
+	"nesdisVHNSQnLw551Weekly",
+	"nesdisVHNSQnLw551Monthly"
+],
+"datasets":[
+    {
+    "id":"nesdisVHNSQnLw551Daily",
+    "subname":"Daily",
+    "parameters":[{
+            "name":"nLw_551",
+            "colorbar":{
+                "colorbarmin":"0",
+				"colorbarmax":"50",
+				"logscale":"FALSE",
+				"continuity":"",
+				"sections":"",
+				"palette":"KT_thermal"
+            }
+        }]
+    },{
+    "id":"nesdisVHNSQnLw551Weekly",
+    "subname":"Weekly",
+    "parameters":[{
+            "name":"nLw_551",
+            "colorbar":{
+                "colorbarmin":"0",
+				"colorbarmax":"50",
+				"logscale":"FALSE",
+				"continuity":"",
+				"sections":"",
+				"palette":"KT_thermal"
+            }
+        }]
+    },{
+    "id":"nesdisVHNSQnLw551Monthly",
+    "subname":"Monthly",
+    "parameters":[{
+            "name":"nLw_551",
+            "colorbar":{
+                "colorbarmin":"0",
+				"colorbarmax":"50",
+				"logscale":"FALSE",
+				"continuity":"",
+				"sections":"",
+				"palette":"KT_thermal"
+            }
+        }]
+	}
+],
+"subNames":[
+	"Daily",
+	"Weekly",
+	"Monthly"
+],
+"processLevel":[
+	"level 3",
+	"level 3",
+	"level 3"
+],
+"qualityLevel":[
+	"science quality",
+	"science quality",
+	"science quality"
+],
+"dataType":[
+    "satellite",
+    "satellite",
+    "satellite"
+],
+"pwSummary":["This is a 4km resolution science-quality ocean color dataset from NOAA. Daily, weekly and monthly versions are available and have global coverage."],
+"relatedDatasets":[{
+    "url":"https://polarwatch.noaa.gov/erddap/griddap/nesdisVHNchlaDaily.graph",
+    "text":"NOAA VIIRS NRT Chlorophyll"
+}]
+}
